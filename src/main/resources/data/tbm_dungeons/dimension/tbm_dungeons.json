@@ -1,0 +1,15 @@
+{
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:the_void",
+      "lakes": false,
+      "features": false,
+      "layers": [{
+        "block": "minecraft:bedrock",
+        "height": 1
+      }]
+    }
+  },
+  "type": "tbm_dungeons:tbm_dungeons_type"
+}

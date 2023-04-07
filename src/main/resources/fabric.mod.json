@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeons",
+  "version": "${version}",
+  "name": "dungeons",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/BhavyaSingh2611/dungeons"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/dungeons/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.tbm.server.dungeons.dungeons.client.DungeonsClient"
+    ],
+    "main": [
+      "org.tbm.server.dungeons.dungeons.Dungeons"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
