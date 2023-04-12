@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#*#",
+    "*$*",
+    "#*#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:ender_eye"
+    },
+    "*": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "$": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "tbm_dungeons:heart_of_attraction"
+  }
+}

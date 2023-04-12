@@ -19,6 +19,9 @@
       "org.tbm.server.dungeons.dungeons.Dungeons"
     ]
   },
+  "mixins": [
+    "tbm_dungeons.mixin.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
