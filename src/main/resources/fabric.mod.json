@@ -24,6 +24,8 @@
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
+    "dungeons_arise": ">=2.1.54",
+    "fabric-api": ">=${fabric_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
   }
