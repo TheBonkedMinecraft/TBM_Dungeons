@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:desert_canyon",
+    "tbm_dungeons:desert_oasis",
+    "tbm_dungeons:desert_spires",
+    "tbm_dungeons:lush_desert",
+    "tbm_dungeons:sandstone_valley"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "tbm_dungeons:swamp/vanilla/small/trees_small",
+        "placement": []
+      },
+      {
+        "feature": "tbm_dungeons:swamp/vanilla/mid/trees_mid",
+        "placement": []
+      },
+      {
+        "feature": "tbm_dungeons:swamp/vanilla/tall/trees_tall",
+        "placement": []
+      }
+    ]
+  }
+}

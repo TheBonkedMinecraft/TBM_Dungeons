@@ -1,0 +1,24 @@
+{
+  "name": "side_to_side",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 6,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "tbm_dungeons:underground/largeminingoutpost",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 7,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "tbm_dungeons:underground/smallminingoutpost",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

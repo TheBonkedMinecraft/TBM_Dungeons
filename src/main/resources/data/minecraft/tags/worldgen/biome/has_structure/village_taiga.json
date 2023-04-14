@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:taiga",
+    "tbm_dungeons:highlands",
+    "tbm_dungeons:forested_highlands",
+    "tbm_dungeons:siberian_taiga",
+    "tbm_dungeons:shield",
+    "tbm_dungeons:shield_clearing",
+    "tbm_dungeons:cold_shrubland",
+    "tbm_dungeons:rocky_shrubland",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:alpine_highlands"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.25,
+        "feature": "tbm_dungeons:forest/flower/small/birch_small"
+      },
+      {
+        "chance": 0.1,
+        "feature": "tbm_dungeons:forest/flower/small/oak_small_m"
+      }
+    ],
+    "default": "tbm_dungeons:forest/flower/small/oak_small"
+  }
+}

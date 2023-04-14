@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:plains",
+    "minecraft:meadow",
+    "tbm_dungeons:blooming_plateau",
+    "tbm_dungeons:steppe",
+    "tbm_dungeons:birch_taiga",
+    "tbm_dungeons:lavender_forest",
+    "tbm_dungeons:temperate_highlands"
+  ]
+}

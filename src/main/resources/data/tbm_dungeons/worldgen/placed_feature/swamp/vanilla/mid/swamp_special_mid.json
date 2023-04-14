@@ -1,0 +1,9 @@
+{
+  "feature": "tbm_dungeons:swamp/vanilla/mid/swamp_special_mid",
+  "placement": [
+    {
+      "type": "count",
+      "count": 8
+    }
+  ]
+}

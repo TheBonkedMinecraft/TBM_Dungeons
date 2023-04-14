@@ -1,0 +1,8 @@
+{
+  "feature": "tbm_dungeons:cave/ice/pools_ring",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "feature": "tbm_dungeons:skylands/winter/big_oak",
+  "placement": [
+    {
+      "type": "count",
+      "count": 1
+    }
+  ]
+}

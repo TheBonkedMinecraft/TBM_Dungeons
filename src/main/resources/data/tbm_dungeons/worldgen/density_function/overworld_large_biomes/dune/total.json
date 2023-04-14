@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:range_choice",
+  "input": "tbm_dungeons:overworld_large_biomes/dune/size_spline",
+  "min_inclusive": -1,
+  "max_exclusive": 1000000,
+  "when_in_range": "tbm_dungeons:overworld_large_biomes/dune/noise",
+  "when_out_of_range": -64
+}

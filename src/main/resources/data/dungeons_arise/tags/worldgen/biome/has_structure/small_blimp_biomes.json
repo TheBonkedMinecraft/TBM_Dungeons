@@ -1,0 +1,31 @@
+{
+  "replace": true,
+  "values": [
+    "tbm_dungeons:rocky_jungle",
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:tropical_jungle",
+    "tbm_dungeons:amethyst_rainforest",
+    "tbm_dungeons:amethyst_canyon",
+    "tbm_dungeons:alpine_grove",
+    "tbm_dungeons:cloud_forest",
+    "tbm_dungeons:birch_taiga",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:shield",
+    "tbm_dungeons:yellowstone",
+    "tbm_dungeons:forested_highlands",
+    "tbm_dungeons:wintry_forest",
+    "tbm_dungeons:yosemite_lowlands",
+    "tbm_dungeons:desert_oasis",
+    "tbm_dungeons:sandstone_valley",
+    "tbm_dungeons:desert_spires",
+    "tbm_dungeons:blooming_plateau",
+    "tbm_dungeons:steppe",
+    "tbm_dungeons:birch_taiga",
+    "tbm_dungeons:lavender_forest",
+    "tbm_dungeons:temperate_highlands",
+    "tbm_dungeons:arid_highlands",
+    "tbm_dungeons:hot_shrubland",
+    "tbm_dungeons:savanna_slopes",
+    "tbm_dungeons:savanna_badlands"
+  ]
+}

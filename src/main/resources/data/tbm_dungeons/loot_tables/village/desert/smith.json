@@ -1,0 +1,19 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "weight": 19,
+          "name": "tbm_dungeons:village/fortified/smith/novice"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "weight": 1,
+          "name": "tbm_dungeons:village/fortified/smith/expert"
+        }
+      ]
+    }
+  ]
+}

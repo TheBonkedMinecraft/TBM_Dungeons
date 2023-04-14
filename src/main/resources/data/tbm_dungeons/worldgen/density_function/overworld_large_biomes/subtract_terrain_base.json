@@ -1,0 +1,8 @@
+{
+  "type": "cache_once",
+  "argument": {
+    "type": "min",
+    "argument1": "tbm_dungeons:overworld_large_biomes/cliff/carve",
+    "argument2": 64
+  }
+}

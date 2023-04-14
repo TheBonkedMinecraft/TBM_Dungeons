@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:desert",
+    "minecraft:plains",
+    "minecraft:savanna",
+    "minecraft:snowy_plains",
+    "minecraft:taiga",
+    "#minecraft:is_mountain",
+    "minecraft:grove",
+    "tbm_dungeons:yellowstone",
+    "tbm_dungeons:shield",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:sakura_valley",
+    "tbm_dungeons:sakura_grove",
+    "tbm_dungeons:lavender_forest"
+  ]
+}

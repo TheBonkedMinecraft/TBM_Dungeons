@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpha_islands_winter",
+    "tbm_dungeons:alpine_grove",
+    "tbm_dungeons:cold_shrubland",
+    "tbm_dungeons:emerald_peaks",
+    "tbm_dungeons:gravel_desert",
+    "tbm_dungeons:ice_marsh",
+    "tbm_dungeons:rocky_mountains",
+    "tbm_dungeons:rocky_shrubland",
+    "tbm_dungeons:siberian_grove",
+    "tbm_dungeons:skylands_winter",
+    "tbm_dungeons:snowy_badlands",
+    "tbm_dungeons:snowy_maple_forest",
+    "tbm_dungeons:snowy_shield",
+    "tbm_dungeons:wintry_forest",
+    "tbm_dungeons:wintry_lowlands"
+  ]
+}

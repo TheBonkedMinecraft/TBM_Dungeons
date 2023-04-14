@@ -1,0 +1,21 @@
+{
+  "name": "tbm_dungeons:village/fortified/starts",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:empty_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "tbm_dungeons:village/fortified/start_castle",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

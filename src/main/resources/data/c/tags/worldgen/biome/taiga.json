@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpine_highlands",
+    "tbm_dungeons:bryce_canyon",
+    "tbm_dungeons:cloud_forest",
+    "tbm_dungeons:forested_highlands",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:scarlet_mountains",
+    "tbm_dungeons:shield",
+    "tbm_dungeons:siberian_grove",
+    "tbm_dungeons:siberian_taiga",
+    "tbm_dungeons:skylands_winter",
+    "tbm_dungeons:snowy_maple_forest",
+    "tbm_dungeons:valley_clearing",
+    "tbm_dungeons:wintry_forest",
+    "tbm_dungeons:wintry_lowlands"
+  ]
+}

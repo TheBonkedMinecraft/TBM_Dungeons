@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_forest",
+    "minecraft:windswept_gravelly_hills",
+    "tbm_dungeons:fractured_savanna",
+    "tbm_dungeons:cloud_forest",
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:haze_mountain"
+  ]
+}

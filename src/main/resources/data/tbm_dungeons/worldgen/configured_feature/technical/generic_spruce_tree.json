@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "tbm_dungeons:taiga/tiny/trees_tiny",
+        "placement": []
+      },
+      {
+        "feature": "tbm_dungeons:taiga/small/trees_small",
+        "placement": []
+      },
+      {
+        "feature": "tbm_dungeons:taiga/mid/trees_mid",
+        "placement": []
+      },
+      {
+        "feature": "tbm_dungeons:taiga/tall/trees_tall",
+        "placement": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:amethyst_canyon",
+    "tbm_dungeons:amethyst_rainforest",
+    "tbm_dungeons:blooming_valley",
+    "tbm_dungeons:caldera",
+    "tbm_dungeons:desert_oasis",
+    "tbm_dungeons:fractured_savanna",
+    "tbm_dungeons:granite_cliffs",
+    "tbm_dungeons:gravel_beach",
+    "tbm_dungeons:ice_marsh",
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:mirage_isles",
+    "tbm_dungeons:orchid_swamp",
+    "tbm_dungeons:red_oasis",
+    "tbm_dungeons:rocky_jungle",
+    "tbm_dungeons:tropical_jungle",
+    "tbm_dungeons:white_cliffs",
+    "tbm_dungeons:yellowstone",
+    "tbm_dungeons:cave/thermal_caves",
+    "tbm_dungeons:cave/underground_jungle"
+  ]
+}

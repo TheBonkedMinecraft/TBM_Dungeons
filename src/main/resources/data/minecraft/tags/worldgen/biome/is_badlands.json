@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:wooded_badlands",
+    "tbm_dungeons:painted_mountains",
+    "tbm_dungeons:bryce_canyon",
+    "tbm_dungeons:savanna_badlands"
+  ]
+}

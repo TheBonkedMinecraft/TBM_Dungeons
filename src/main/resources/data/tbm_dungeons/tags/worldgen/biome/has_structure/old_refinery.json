@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:cave/fungal_caves",
+    "tbm_dungeons:cave/infested_caves",
+    "tbm_dungeons:cave/deep_caves"
+  ]
+}

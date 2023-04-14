@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#tbm_dungeons:soil_stone",
+    "minecraft:calcite",
+    "#tbm_dungeons:terracotta",
+    "smooth_basalt",
+    "blackstone"
+  ]
+}

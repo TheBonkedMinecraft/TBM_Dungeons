@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:desert_canyon",
+    "tbm_dungeons:desert_spires",
+    "tbm_dungeons:forested_highlands",
+    "tbm_dungeons:haze_mountain",
+    "tbm_dungeons:highlands",
+    "tbm_dungeons:mountain_steppe",
+    "tbm_dungeons:painted_mountains",
+    "tbm_dungeons:scarlet_mountains",
+    "tbm_dungeons:temperate_highlands"
+  ]
+}

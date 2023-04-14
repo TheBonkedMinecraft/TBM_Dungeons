@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:ancient_sands",
+    "tbm_dungeons:bryce_canyon",
+    "tbm_dungeons:painted_mountains",
+    "tbm_dungeons:red_oasis",
+    "tbm_dungeons:warped_mesa",
+    "tbm_dungeons:white_mesa"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:meadow",
+    "minecraft:frozen_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:stony_peaks",
+    "minecraft:snowy_slopes",
+    "tbm_dungeons:emerald_peaks",
+    "tbm_dungeons:scarlet_mountains",
+    "tbm_dungeons:rocky_mountains",
+    "tbm_dungeons:caldera",
+    "tbm_dungeons:volcanic_peaks"
+  ]
+}

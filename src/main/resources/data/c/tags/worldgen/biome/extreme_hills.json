@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:blooming_plateau",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:shield",
+    "tbm_dungeons:shield_clearing",
+    "tbm_dungeons:snowy_shield",
+    "tbm_dungeons:steppe",
+    "tbm_dungeons:windswept_spires",
+    "tbm_dungeons:yellowstone",
+    "tbm_dungeons:yosemite_cliffs"
+  ]
+}

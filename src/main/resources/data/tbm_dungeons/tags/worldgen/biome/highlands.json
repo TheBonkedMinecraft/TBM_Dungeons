@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:highlands",
+    "tbm_dungeons:arid_highlands",
+    "tbm_dungeons:alpine_highlands",
+    "tbm_dungeons:forested_highlands",
+    "tbm_dungeons:temperate_highlands"
+  ]
+}

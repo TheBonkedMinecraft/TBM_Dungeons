@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:amethyst_canyon",
+    "tbm_dungeons:amethyst_rainforest",
+    "tbm_dungeons:arid_highlands",
+    "tbm_dungeons:brushland",
+    "tbm_dungeons:hot_shrubland",
+    "tbm_dungeons:moonlight_grove",
+    "tbm_dungeons:moonlight_valley",
+    "tbm_dungeons:savanna_badlands",
+    "tbm_dungeons:savanna_slopes"
+  ]
+}

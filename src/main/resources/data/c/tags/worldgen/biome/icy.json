@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:frozen_cliffs",
+    "tbm_dungeons:glacial_chasm",
+    "tbm_dungeons:skylands_winter"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "tbm_dungeons:painted_mountains",
+    "tbm_dungeons:bryce_canyon",
+    "tbm_dungeons:savanna_badlands"
+  ]
+}

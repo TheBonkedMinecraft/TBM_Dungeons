@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": "tbm_dungeons:skylands/winter/mega_spruce"
+      },
+      {
+        "chance": 0.3,
+        "feature": "tbm_dungeons:skylands/winter/big_oak"
+      },
+      {
+        "chance": 0.125,
+        "feature": "tbm_dungeons:taiga/mid/pine_mid"
+      },
+      {
+        "chance": 0.125,
+        "feature": "tbm_dungeons:taiga/small/pine_small"
+      }
+    ],
+    "default": "tbm_dungeons:skylands/winter/oak"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp",
+    "tbm_dungeons:orchid_swamp",
+    "tbm_dungeons:ice_marsh"
+  ]
+}

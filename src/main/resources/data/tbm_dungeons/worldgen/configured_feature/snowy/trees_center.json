@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.4,
+        "feature": "tbm_dungeons:snowy/mega_spruce"
+      },
+      {
+        "chance": 0.5,
+        "feature": "tbm_dungeons:snowy/max_spruce"
+      }
+    ],
+    "default": "tbm_dungeons:snowy/spruce"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "config": {
+    "start_pool": "tbm_dungeons:spire",
+    "size": 1
+  },
+  "biomes": "#tbm_dungeons:has_structure/spire",
+  "adapt_noise": false,
+  "spawn_overrides": {},
+  "type": "minecraft:bastion_remnant"
+}

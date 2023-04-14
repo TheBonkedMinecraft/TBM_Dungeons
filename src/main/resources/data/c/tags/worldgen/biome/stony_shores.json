@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:amethyst_canyon",
+    "tbm_dungeons:basalt_cliffs",
+    "tbm_dungeons:granite_cliffs",
+    "tbm_dungeons:gravel_beach"
+  ]
+}

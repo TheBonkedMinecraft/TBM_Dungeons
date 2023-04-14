@@ -1,0 +1,9 @@
+{
+  "feature": "tbm_dungeons:swamp/orchid/small/swamp_special_small",
+  "placement": [
+    {
+      "type": "count",
+      "count": 8
+    }
+  ]
+}

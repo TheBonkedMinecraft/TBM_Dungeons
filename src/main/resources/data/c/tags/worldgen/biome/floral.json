@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:blooming_plateau",
+    "tbm_dungeons:blooming_valley",
+    "tbm_dungeons:orchid_swamp"
+  ]
+}

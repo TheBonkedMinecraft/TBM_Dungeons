@@ -1,0 +1,9 @@
+{
+  "feature": "tbm_dungeons:swamp/vanilla/tiny/swamp_special_tiny",
+  "placement": [
+    {
+      "type": "count",
+      "count": 8
+    }
+  ]
+}

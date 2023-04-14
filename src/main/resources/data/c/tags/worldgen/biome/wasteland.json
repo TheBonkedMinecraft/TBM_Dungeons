@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:ashen_savanna",
+    "tbm_dungeons:basalt_cliffs",
+    "tbm_dungeons:caldera",
+    "tbm_dungeons:gravel_desert",
+    "tbm_dungeons:ice_marsh",
+    "tbm_dungeons:snowy_badlands",
+    "tbm_dungeons:volcanic_crater",
+    "tbm_dungeons:volcanic_peaks",
+    "tbm_dungeons:yellowstone"
+  ]
+}

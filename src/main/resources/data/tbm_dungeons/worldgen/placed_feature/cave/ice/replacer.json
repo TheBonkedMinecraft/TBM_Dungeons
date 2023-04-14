@@ -1,0 +1,8 @@
+{
+  "feature": "tbm_dungeons:cave/ice/replacer",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

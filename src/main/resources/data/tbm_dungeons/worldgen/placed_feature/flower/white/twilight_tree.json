@@ -1,0 +1,9 @@
+{
+  "feature": "tbm_dungeons:flower/white/twilight_tree",
+  "placement": [
+    {
+      "type": "count",
+      "count": 2
+    }
+  ]
+}

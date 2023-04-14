@@ -14,5 +14,6 @@ public class ModDimensions {
     public static RegistryKey<World> DUNGEONS_KEY = RegistryKey.of(Registry.WORLD_KEY, DIMENSION_KEY.getValue());
     private static final RegistryKey<DimensionType> DIMENSION_TYPE_KEY = RegistryKey.of(Registry.DIMENSION_TYPE_KEY,
             new Identifier(Dungeons.MOD_ID, "tbm_dungeons_type"));
-    public static void register() {}
+    public static void register() {
+    }
 }

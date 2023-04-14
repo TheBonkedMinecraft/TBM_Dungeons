@@ -1,0 +1,10 @@
+{
+  "config": {
+    "start_pool": "tbm_dungeons:village/fortified/starts",
+    "size": 6
+  },
+  "biomes": "#tbm_dungeons:has_structure/fortified_village",
+  "adapt_noise": true,
+  "spawn_overrides": {},
+  "type": "minecraft:village"
+}

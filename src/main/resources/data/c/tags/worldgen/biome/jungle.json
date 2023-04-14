@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:amethyst_canyon",
+    "tbm_dungeons:amethyst_rainforest",
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:rocky_jungle",
+    "tbm_dungeons:skylands_summer",
+    "tbm_dungeons:tropical_jungle",
+    "tbm_dungeons:cave/underground_jungle"
+  ]
+}

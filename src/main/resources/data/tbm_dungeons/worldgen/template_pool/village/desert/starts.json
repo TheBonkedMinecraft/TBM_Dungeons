@@ -1,0 +1,15 @@
+{
+  "name": "tbm_dungeons:village/desert/starts",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "tbm_dungeons:village/desert/houses/castle",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "reset": false,
+  "values": [
+    "tbm_dungeons:basalt_cliffs",
+    "tbm_dungeons:frozen_cliffs",
+    "tbm_dungeons:granite_cliffs",
+    "tbm_dungeons:white_cliffs",
+    "tbm_dungeons:yosemite_cliffs"
+  ]
+}

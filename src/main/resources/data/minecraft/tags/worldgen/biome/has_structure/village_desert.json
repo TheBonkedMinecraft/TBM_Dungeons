@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:desert",
+    "tbm_dungeons:sandstone_valley",
+    "tbm_dungeons:desert_oasis"
+  ]
+}

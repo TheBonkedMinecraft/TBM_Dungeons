@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.03,
+        "feature": "tbm_dungeons:skylands/mega_tree"
+      },
+      {
+        "chance": 0.05,
+        "feature": "tbm_dungeons:skylands/cloud_tree_birch"
+      },
+      {
+        "chance": 0.5,
+        "feature": "tbm_dungeons:nothing"
+      },
+      {
+        "chance": 0.22,
+        "feature": "tbm_dungeons:skylands/big_cone_tree"
+      },
+      {
+        "chance": 0.17,
+        "feature": "tbm_dungeons:skylands/mid_tree"
+      }
+    ],
+    "default": "tbm_dungeons:nothing"
+  }
+}

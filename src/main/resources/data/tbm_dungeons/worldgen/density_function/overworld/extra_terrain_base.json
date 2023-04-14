@@ -1,0 +1,12 @@
+{
+  "type": "cache_once",
+  "argument": {
+    "type": "max",
+    "argument1": "tbm_dungeons:overworld/arch/total",
+    "argument2": {
+      "type": "max",
+      "argument1": "tbm_dungeons:overworld/dune/total",
+      "argument2": "tbm_dungeons:overworld/spikes/tendrils"
+    }
+  }
+}

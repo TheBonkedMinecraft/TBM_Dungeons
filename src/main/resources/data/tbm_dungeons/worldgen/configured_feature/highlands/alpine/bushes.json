@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "tbm_dungeons:highlands/alpine/spruce_pine",
+        "chance": 0.08
+      },
+      {
+        "feature": "tbm_dungeons:highlands/alpine/pine",
+        "chance": 0.12
+      },
+      {
+        "feature": "tbm_dungeons:highlands/steppe/bush_medium",
+        "chance": 0.7
+      }
+    ],
+    "default": "tbm_dungeons:highlands/steppe/bush_small"
+  }
+}

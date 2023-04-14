@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": "tbm_dungeons:swamp/vanilla/mid/swamp_special_mid"
+      }
+    ],
+    "default": "tbm_dungeons:swamp/vanilla/mid/swamp_mid"
+  }
+}

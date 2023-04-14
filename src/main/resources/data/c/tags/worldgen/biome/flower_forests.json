@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:cloud_forest",
+    "tbm_dungeons:lavender_forest",
+    "tbm_dungeons:lavender_valley",
+    "tbm_dungeons:moonlight_grove",
+    "tbm_dungeons:moonlight_valley",
+    "tbm_dungeons:sakura_grove",
+    "tbm_dungeons:sakura_valley",
+    "tbm_dungeons:skylands_spring"
+  ]
+}

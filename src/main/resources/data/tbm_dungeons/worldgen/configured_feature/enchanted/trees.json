@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.1,
+        "feature": "tbm_dungeons:enchanted/enchanted_oak"
+      },
+      {
+        "chance": 0.49,
+        "feature": "tbm_dungeons:enchanted/bush"
+      },
+      {
+        "chance": 0.25,
+        "feature": "tbm_dungeons:enchanted/big_tree"
+      }
+    ],
+    "default": "tbm_dungeons:enchanted/jungle_tree"
+  }
+}

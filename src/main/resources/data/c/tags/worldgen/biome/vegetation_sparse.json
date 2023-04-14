@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpine_grove",
+    "tbm_dungeons:arid_highlands",
+    "tbm_dungeons:brushland",
+    "tbm_dungeons:cold_shrubland",
+    "tbm_dungeons:highlands",
+    "tbm_dungeons:hot_shrubland",
+    "tbm_dungeons:rocky_shrubland",
+    "tbm_dungeons:savanna_badlands",
+    "tbm_dungeons:savanna_slopes",
+    "tbm_dungeons:shield_clearing",
+    "tbm_dungeons:steppe",
+    "tbm_dungeons:valley_clearing",
+    "tbm_dungeons:windswept_spires",
+    "tbm_dungeons:yosemite_cliffs"
+  ]
+}

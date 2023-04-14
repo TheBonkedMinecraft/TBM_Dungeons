@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpine_grove",
+    "tbm_dungeons:amethyst_canyon",
+    "tbm_dungeons:ashen_savanna",
+    "tbm_dungeons:blooming_valley",
+    "tbm_dungeons:caldera",
+    "tbm_dungeons:glacial_chasm",
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:lavender_valley",
+    "tbm_dungeons:moonlight_valley",
+    "tbm_dungeons:rocky_jungle",
+    "tbm_dungeons:rocky_mountains",
+    "tbm_dungeons:sakura_valley",
+    "tbm_dungeons:sandstone_valley",
+    "tbm_dungeons:savanna_slopes",
+    "tbm_dungeons:siberian_grove",
+    "tbm_dungeons:stony_spires"
+  ]
+}

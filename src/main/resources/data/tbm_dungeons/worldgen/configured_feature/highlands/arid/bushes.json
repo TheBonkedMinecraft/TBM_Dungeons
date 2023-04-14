@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "tbm_dungeons:highlands/arid/tree",
+        "chance": 0.1
+      },
+      {
+        "feature": "tbm_dungeons:highlands/arid/bush_medium",
+        "chance": 0.5
+      }
+    ],
+    "default": "tbm_dungeons:highlands/arid/bush_small"
+  }
+}

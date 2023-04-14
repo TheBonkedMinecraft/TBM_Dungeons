@@ -1,0 +1,8 @@
+{
+  "feature": "tbm_dungeons:mountains/rocky/deepslate_extra",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

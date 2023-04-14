@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "minecraft:oak",
+        "chance": 0.01
+      },
+      {
+        "feature": "tbm_dungeons:highlands/arid/bush_small",
+        "chance": 0.03
+      },
+      {
+        "feature": "tbm_dungeons:highlands/arid/bush_medium",
+        "chance": 0.21
+      },
+      {
+        "feature": "tbm_dungeons:highlands/steppe/bush_medium",
+        "chance": 0.55
+      }
+    ],
+    "default": "tbm_dungeons:highlands/steppe/bush_small"
+  }
+}

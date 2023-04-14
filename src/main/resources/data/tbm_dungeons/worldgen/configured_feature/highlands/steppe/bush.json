@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "tbm_dungeons:highlands/steppe/bush_small",
+        "chance": 0.2
+      }
+    ],
+    "default": "tbm_dungeons:highlands/steppe/bush_small"
+  }
+}

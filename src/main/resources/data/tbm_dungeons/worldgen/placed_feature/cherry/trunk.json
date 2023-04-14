@@ -1,0 +1,9 @@
+{
+  "feature": "tbm_dungeons:cherry/trunk",
+  "placement": [
+    {
+      "type": "heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    }
+  ]
+}

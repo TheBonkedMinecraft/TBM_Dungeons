@@ -1,0 +1,42 @@
+{
+  "name": "tbm_dungeons:village/desert/roads",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "terrain_matching",
+        "location": "tbm_dungeons:village/desert/terminators/term1",
+        "processors": "tbm_dungeons:village/desert/road"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "terrain_matching",
+        "location": "tbm_dungeons:village/desert/terminators/term2",
+        "processors": "tbm_dungeons:village/desert/road"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "terrain_matching",
+        "location": "tbm_dungeons:village/desert/terminators/term3",
+        "processors": "tbm_dungeons:village/desert/road"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "terrain_matching",
+        "location": "tbm_dungeons:village/desert/terminators/term4",
+        "processors": "tbm_dungeons:village/desert/road"
+      }
+    }
+  ]
+}

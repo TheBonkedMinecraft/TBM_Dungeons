@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:skylands_winter",
+    "tbm_dungeons:skylands_spring",
+    "tbm_dungeons:skylands_summer",
+    "tbm_dungeons:skylands_autumn"
+  ]
+}

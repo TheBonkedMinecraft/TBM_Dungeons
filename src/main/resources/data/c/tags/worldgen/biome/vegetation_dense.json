@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:skylands_winter",
+    "tbm_dungeons:tropical_jungle",
+    "tbm_dungeons:wintry_forest",
+    "tbm_dungeons:wintry_lowlands"
+  ]
+}

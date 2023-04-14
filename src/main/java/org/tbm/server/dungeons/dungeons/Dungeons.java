@@ -17,6 +17,5 @@ public class Dungeons implements ModInitializer {
         ModItems.registerModItems();
         ModEffects.registerEffects();
         ModPotions.registerPotions();
-
     }
 }

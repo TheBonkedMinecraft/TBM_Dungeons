@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:emerald_peaks",
+    "tbm_dungeons:fractured_savanna",
+    "tbm_dungeons:frozen_cliffs",
+    "tbm_dungeons:mirage_isles",
+    "tbm_dungeons:volcanic_crater",
+    "tbm_dungeons:volcanic_peaks",
+    "tbm_dungeons:warped_mesa"
+  ]
+}

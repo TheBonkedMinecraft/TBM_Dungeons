@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:cave/andesite_caves",
+    "tbm_dungeons:cave/crystal_caves",
+    "tbm_dungeons:cave/deep_caves",
+    "tbm_dungeons:cave/desert_caves",
+    "tbm_dungeons:cave/diorite_caves",
+    "tbm_dungeons:cave/frostfire_caves",
+    "tbm_dungeons:cave/fungal_caves",
+    "tbm_dungeons:cave/granite_caves",
+    "tbm_dungeons:cave/ice_caves",
+    "tbm_dungeons:cave/infested_caves",
+    "tbm_dungeons:cave/mantle_caves",
+    "tbm_dungeons:cave/thermal_caves",
+    "tbm_dungeons:cave/tuff_caves",
+    "tbm_dungeons:cave/underground_jungle"
+  ]
+}

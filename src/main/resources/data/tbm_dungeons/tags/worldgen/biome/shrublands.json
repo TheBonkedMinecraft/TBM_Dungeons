@@ -1,0 +1,9 @@
+{
+  "reset": false,
+  "values": [
+    "tbm_dungeons:shrubland",
+    "tbm_dungeons:hot_shrubland",
+    "tbm_dungeons:cold_shrubland",
+    "tbm_dungeons:rocky_shrubland"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpha_islands",
+    "tbm_dungeons:birch_taiga",
+    "tbm_dungeons:lavender_forest",
+    "tbm_dungeons:lavender_valley",
+    "tbm_dungeons:mirage_isles",
+    "tbm_dungeons:moonlight_grove",
+    "tbm_dungeons:sakura_grove",
+    "tbm_dungeons:sakura_valley",
+    "tbm_dungeons:skylands",
+    "tbm_dungeons:skylands_autumn",
+    "tbm_dungeons:skylands_spring",
+    "tbm_dungeons:temperate_highlands",
+    "tbm_dungeons:white_cliffs",
+    "tbm_dungeons:yosemite_lowlands"
+  ]
+}

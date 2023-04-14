@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:savanna",
+    "tbm_dungeons:arid_highlands",
+    "tbm_dungeons:hot_shrubland",
+    "tbm_dungeons:savanna_slopes",
+    "tbm_dungeons:savanna_badlands"
+  ]
+}

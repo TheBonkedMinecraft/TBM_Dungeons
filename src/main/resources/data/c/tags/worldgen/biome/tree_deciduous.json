@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpha_islands",
+    "tbm_dungeons:alpha_islands_winter",
+    "tbm_dungeons:alpine_highlands",
+    "tbm_dungeons:birch_taiga",
+    "tbm_dungeons:haze_mountain",
+    "tbm_dungeons:ice_marsh",
+    "tbm_dungeons:lavender_forest",
+    "tbm_dungeons:lavender_valley",
+    "tbm_dungeons:mirage_isles",
+    "tbm_dungeons:sakura_grove",
+    "tbm_dungeons:skylands_autumn",
+    "tbm_dungeons:skylands_spring",
+    "tbm_dungeons:temperate_highlands",
+    "tbm_dungeons:white_cliffs"
+  ]
+}

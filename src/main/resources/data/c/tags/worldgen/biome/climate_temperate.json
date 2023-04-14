@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "tbm_dungeons:alpha_islands",
+    "tbm_dungeons:blooming_plateau",
+    "tbm_dungeons:blooming_valley",
+    "tbm_dungeons:gravel_beach",
+    "tbm_dungeons:lavender_forest",
+    "tbm_dungeons:lavender_valley",
+    "tbm_dungeons:lush_valley",
+    "tbm_dungeons:mirage_isles",
+    "tbm_dungeons:moonlight_grove",
+    "tbm_dungeons:moonlight_valley",
+    "tbm_dungeons:sakura_grove",
+    "tbm_dungeons:sakura_valley",
+    "tbm_dungeons:skylands",
+    "tbm_dungeons:skylands_autumn",
+    "tbm_dungeons:skylands_spring",
+    "tbm_dungeons:steppe",
+    "tbm_dungeons:stony_spires",
+    "tbm_dungeons:temperate_highlands",
+    "tbm_dungeons:valley_clearing",
+    "tbm_dungeons:white_cliffs",
+    "tbm_dungeons:windswept_spires",
+    "tbm_dungeons:yosemite_cliffs",
+    "tbm_dungeons:yosemite_lowlands"
+  ]
+}

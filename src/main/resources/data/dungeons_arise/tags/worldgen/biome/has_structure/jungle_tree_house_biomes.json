@@ -1,0 +1,10 @@
+{
+  "replace": true,
+  "values": [
+    "tbm_dungeons:rocky_jungle",
+    "tbm_dungeons:jungle_mountains",
+    "tbm_dungeons:tropical_jungle",
+    "tbm_dungeons:amethyst_rainforest",
+    "tbm_dungeons:amethyst_canyon"
+  ]
+}

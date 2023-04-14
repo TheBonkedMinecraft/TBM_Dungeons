@@ -1,0 +1,31 @@
+{
+  "values": [
+    "minecraft:snowy_plains",
+    "minecraft:ice_spikes",
+    "minecraft:frozen_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:snowy_slopes",
+    "minecraft:frozen_ocean",
+    "minecraft:deep_frozen_ocean",
+    "minecraft:grove",
+    "minecraft:deep_dark",
+    "minecraft:frozen_river",
+    "minecraft:snowy_taiga",
+    "minecraft:snowy_beach",
+    "#minecraft:is_end",
+    "tbm_dungeons:alpha_islands_winter",
+    "tbm_dungeons:alpine_grove",
+    "tbm_dungeons:emerald_peaks",
+    "tbm_dungeons:frozen_cliffs",
+    "tbm_dungeons:glacial_chasm",
+    "tbm_dungeons:gravel_desert",
+    "tbm_dungeons:ice_marsh",
+    "tbm_dungeons:scarlet_mountains",
+    "tbm_dungeons:skylands_winter",
+    "tbm_dungeons:snowy_badlands",
+    "tbm_dungeons:snowy_maple_forest",
+    "tbm_dungeons:snowy_shield",
+    "tbm_dungeons:wintry_forest",
+    "tbm_dungeons:wintry_lowlands"
+  ]
+}

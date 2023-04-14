@@ -1,0 +1,8 @@
+{
+  "feature": "tbm_dungeons:cave/frostfire/sculk_trap",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
