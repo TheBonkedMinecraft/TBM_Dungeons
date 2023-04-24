@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "tbm_dungeons:chest_pile",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 3141592653589,
+    "spacing": 6,
+    "separation": 3,
+    "type": "minecraft:random_spread"
+  }
+}

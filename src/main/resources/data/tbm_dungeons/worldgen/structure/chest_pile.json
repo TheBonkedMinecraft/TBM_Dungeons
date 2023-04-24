@@ -1,0 +1,20 @@
+{
+  "biomes": "#tbm_dungeons:all_tbm_dungeons_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {},
+  "type": "minecraft:jigsaw",
+  "start_pool": "tbm_dungeons:chest_pile",
+  "size": 1,
+  "step": "surface_structures",
+  "start_height": {
+    "type": "minecraft:uniform",
+    "min_inclusive": {
+      "absolute": 30
+    },
+    "max_inclusive": {
+      "absolute": 280
+    }
+  },
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}

@@ -1,0 +1,151 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 8,
+        "max": 12
+      },
+      "bonus_rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "byg:all/logs",
+          "expand": false,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 24,
+                "max": 64
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.8
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 8,
+        "max": 12
+      },
+      "bonus_rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "byg:all/ice",
+          "expand": false,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 24,
+                "max": 64
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 8,
+        "max": 12
+      },
+      "bonus_rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "byg:end_stone",
+          "expand": false,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 24,
+                "max": 64
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 8,
+        "max": 12
+      },
+      "bonus_rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "byg:all/sand",
+          "expand": false,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 12,
+                "max": 32
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 8,
+        "max": 12
+      },
+      "bonus_rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "byg:all/ores",
+          "expand": false,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 12,
+                "max": 32
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.05
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
