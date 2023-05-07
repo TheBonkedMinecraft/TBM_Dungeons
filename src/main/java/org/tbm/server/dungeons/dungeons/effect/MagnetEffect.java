@@ -25,7 +25,7 @@ public class MagnetEffect extends StatusEffect {
 
         int pulled = 0;
         for (ItemEntity item : items) {
-            boolean attractable = item.age > 100;
+            boolean attractable = item.age > 75;
             if (attractable && item.isAlive()) {
                 if (pulled++ > 200) {
                     break;

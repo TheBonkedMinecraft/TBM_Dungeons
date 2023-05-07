@@ -8,6 +8,6 @@ import net.fabricmc.api.Environment;
 public class DungeonsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        System.out.println("Hello from ModDimensions Client");
+        System.out.println("Hello from TBM Dungeons Client");
     }
 }
