@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "id": "dungeons",
+  "id": "tbm_dungeons",
   "version": "${version}",
-  "name": "dungeons",
-  "description": "",
-  "authors": [],
+  "name": "TBM Dungeons",
+  "description": "Addon Mod for The Bonked Minecraft Server",
+  "authors": ["slowest____side"],
   "contact": {
-    "repo": "https://github.com/BhavyaSingh2611/dungeons"
+    "repo": "https://github.com/TheBonkedMinecraft/TBM_Dungeons"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/dungeons/icon.png",
+  "icon": "assets/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
