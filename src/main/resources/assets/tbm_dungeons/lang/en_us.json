@@ -1,6 +1,8 @@
 {
   "item.tbm_dungeons.dungeon_crystal": "Dungeon Crystal",
   "effect.tbm_dungeons.magnetism": "Magnetism",
-  "item.tbm_dungeons.heart_of_attraction": "Heart of Attraction"
-
+  "item.tbm_dungeons.heart_of_attraction": "Heart of Attraction",
+  "key.categories.state_update": "State Sync",
+  "key.state_update.reveal": "Sync state of everycomp",
+  "msg.request": "requesting resend of blocks around you"
 }
