@@ -3,10 +3,9 @@ package org.tbm.server.dungeons.dungeons.mixin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.packet.s2c.play.ChunkDeltaUpdateS2CPacket;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
+import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,16 +21,17 @@ import java.util.Objects;
 import static org.tbm.server.dungeons.dungeons.Dungeons.STATE_CHANNEL;
 
 @Mixin(ClientPlayNetworkHandler.class)
-public class DeltaChunkUpdate {
+public abstract class DeltaChunkUpdate {
     @Shadow
     private MinecraftClient client;
+
 
     @Inject(method = "onChunkDeltaUpdate",
             require = 1,
             allow = 1,
             at = @At("TAIL"))
     private void logChunkDeltaPacket(ChunkDeltaUpdateS2CPacket packet, CallbackInfo ci){
-        if (Objects.equals(client.player.getWorld().getRegistryKey(), RegistryKey.of(Registry.WORLD_KEY, new Identifier("minecraft", "overworld")))) {
+        if (Objects.equals(client.player.getWorld().getRegistryKey(), World.OVERWORLD)) {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
@@ -39,7 +39,7 @@ public class DeltaChunkUpdate {
                     }
                 }
             }
-        } else if (Objects.equals(client.player.getWorld().getRegistryKey(), RegistryKey.of(Registry.WORLD_KEY, new Identifier("minecraft", "the_nether")))) {
+        } else if (Objects.equals(client.player.getWorld().getRegistryKey(), World.NETHER)) {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
@@ -47,7 +47,7 @@ public class DeltaChunkUpdate {
                     }
                 }
             }
-        } else if (Objects.equals(client.player.getWorld().getRegistryKey(), RegistryKey.of(Registry.WORLD_KEY, new Identifier("minecraft", "the_end")))) {
+        } else if (Objects.equals(client.player.getWorld().getRegistryKey(), World.END)) {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
@@ -55,7 +55,7 @@ public class DeltaChunkUpdate {
                     }
                 }
             }
-        } else if (Objects.equals(client.player.getWorld().getRegistryKey(), RegistryKey.of(Registry.WORLD_KEY, new Identifier("tbm_dungeons", "tbm_dungeons")))) {
+        } else if (Objects.equals(client.player.getWorld().getRegistryKey(), ModDimensions.DUNGEONS_KEY)) {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {

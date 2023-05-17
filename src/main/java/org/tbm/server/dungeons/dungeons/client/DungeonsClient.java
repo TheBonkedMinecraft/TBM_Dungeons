@@ -22,14 +22,17 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import org.tbm.server.dungeons.dungeons.Dungeons;
+import org.tbm.server.dungeons.dungeons.component.IntComponent;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketDungeons;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketEnd;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketNether;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketOverworld;
 import org.tbm.server.dungeons.dungeons.screen.DifficultySliderScreen;
+import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_H;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_K;
@@ -44,28 +47,44 @@ public class DungeonsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         KeyBindingHelper.registerKeyBinding(BEGIN);
-        AtomicInteger time = new AtomicInteger(72000);
+        AtomicBoolean inDungeon = new AtomicBoolean(false);
+        AtomicBoolean isHudLoaded = new AtomicBoolean(false);
         ClientTickEvents.END_WORLD_TICK.register(world ->{
-            time.getAndDecrement();
-            var labelElem = (LabelComponent) ((ParentComponent) Hud.getComponent(new Identifier("tbm_dungeons","time"))).childById(LabelComponent.class, "time");
-            labelElem.text(Text.literal(formatTicks(time.get())).formatted(Formatting.WHITE)).id("time");
+            inDungeon.set(world.getRegistryKey() == ModDimensions.DUNGEONS_KEY);
         });
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if(inDungeon.get() && client.player != null){
+                IntComponent syncedTime = Dungeons.DUNGEONS_TICK.get(client.player);
+                if (!isHudLoaded.get()) {
+                    Hud.add(new Identifier("tbm_dungeons","time"),() ->
+                        Containers.verticalFlow(Sizing.content(), Sizing.content())
+                                .child(Components.item(Items.CLOCK.getDefaultStack()).margins(Insets.of(3)))
+                                .child(Components.label(Text.literal(formatTicks(syncedTime.getValue())).formatted(Formatting.WHITE)).id("time"))
+                                .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER)
+                                .padding(Insets.of(5))
+                                .surface(Surface.BLANK)
+                                .margins(Insets.of(5,0,5,0))
+                                .positioning(Positioning.relative(15, 100)));
+                    isHudLoaded.set(true);
+                } else {
+                    if (Hud.getComponent(new Identifier("tbm_dungeons","time")) != null) {
+                        var labelElem = (LabelComponent) ((ParentComponent) Hud.getComponent(new Identifier("tbm_dungeons","time"))).childById(LabelComponent.class, "time");
+                            labelElem.text(Text.literal(formatTicks(syncedTime.getValue())).formatted(Formatting.WHITE)).id("time");
+                        }
+                    }
+            } else {
+                if (isHudLoaded.get()) {
+                    Hud.remove(new Identifier("tbm_dungeons","time"));
+                    isHudLoaded.set(false);
+                }
+            }
             while (BEGIN.wasPressed()) {
                 client.setScreen(new DifficultySliderScreen());
             }
         });
 
-        Hud.add(new Identifier("tbm_dungeons","time"),() ->
-                Containers.verticalFlow(Sizing.content(), Sizing.content())
-                        .child(Components.item(Items.CLOCK.getDefaultStack()).margins(Insets.of(3)))
-                        .child(Components.label(Text.literal("01:00:00").formatted(Formatting.WHITE)).id("time"))
-                        .alignment(HorizontalAlignment.CENTER, VerticalAlignment.CENTER)
-                        .padding(Insets.of(5))
-                        .surface(Surface.BLANK)
-                        .margins(Insets.of(5,0,5,0))
-                        .positioning(Positioning.relative(15, 100)));
+
 
         final String category="key.categories.state_update";
         requestBlocks = new KeyBinding("key.state_update.reveal", GLFW_KEY_K, category);
@@ -108,7 +127,7 @@ public class DungeonsClient implements ClientModInitializer {
             formattedTime += "0";
         formattedTime += seconds ;
 
-        return formattedTime;
+        return timeInTicks >= 0 ? formattedTime : "00:00:00";
     }
 
 

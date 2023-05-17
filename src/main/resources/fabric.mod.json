@@ -8,6 +8,12 @@
   "contact": {
     "repo": "https://github.com/TheBonkedMinecraft/TBM_Dungeons"
   },
+  "custom": {
+    "cardinal-components": [
+      "tbm_dungeons:dungeons_tick",
+      "tbm_dungeons:portal_pos"
+    ]
+  },
   "license": "All-Rights-Reserved",
   "icon": "assets/icon.png",
   "environment": "*",
@@ -16,6 +22,9 @@
       "org.tbm.server.dungeons.dungeons.client.DungeonsClient"
     ],
     "main": [
+      "org.tbm.server.dungeons.dungeons.Dungeons"
+    ],
+    "cardinal-components": [
       "org.tbm.server.dungeons.dungeons.Dungeons"
     ]
   },
