@@ -28,7 +28,7 @@ import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketDungeons;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketEnd;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketNether;
 import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketOverworld;
-import org.tbm.server.dungeons.dungeons.screen.DifficultySliderScreen;
+import org.tbm.server.dungeons.dungeons.screen.DifficultyOptionScreen;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 
 import java.util.Objects;
@@ -40,7 +40,7 @@ import static org.tbm.server.dungeons.dungeons.Dungeons.STATE_CHANNEL;
 
 @Environment(EnvType.CLIENT)
 public class DungeonsClient implements ClientModInitializer {
-    private static final KeyBinding BEGIN = new KeyBinding("key.owo-ui-academy.begin", GLFW_KEY_H, "key.categories.misc");
+    private static final KeyBinding BEGIN = new KeyBinding("key.dungeons-dificultyui.show", GLFW_KEY_H, "key.categories.misc");
 
     static KeyBinding requestBlocks;
 
@@ -80,7 +80,7 @@ public class DungeonsClient implements ClientModInitializer {
                 }
             }
             while (BEGIN.wasPressed()) {
-                client.setScreen(new DifficultySliderScreen());
+                client.setScreen(new DifficultyOptionScreen());
             }
         });
 

@@ -6,7 +6,8 @@
   "description": "Addon Mod for The Bonked Minecraft Server",
   "authors": ["slowest____side"],
   "contact": {
-    "repo": "https://github.com/TheBonkedMinecraft/TBM_Dungeons"
+    "repo": "https://github.com/TheBonkedMinecraft/TBM_Dungeons",
+    "issues": "https://github.com/TheBonkedMinecraft/TBM_Dungeons/issues"
   },
   "custom": {
     "cardinal-components": [
