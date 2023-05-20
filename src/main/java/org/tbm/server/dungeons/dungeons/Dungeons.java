@@ -12,10 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
-import org.tbm.server.dungeons.dungeons.component.BlockPosComponent;
-import org.tbm.server.dungeons.dungeons.component.DungeonsPortalPos;
-import org.tbm.server.dungeons.dungeons.component.DungeonsTick;
-import org.tbm.server.dungeons.dungeons.component.IntComponent;
+import org.tbm.server.dungeons.dungeons.component.*;
 import org.tbm.server.dungeons.dungeons.effect.ModEffects;
 import org.tbm.server.dungeons.dungeons.item.ModItems;
 import org.tbm.server.dungeons.dungeons.packet.*;
@@ -30,6 +27,8 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
             ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "dungeons_tick"), IntComponent.class);
     public static final ComponentKey<BlockPosComponent> PORTAL_POS =
             ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "portal_pos"), BlockPosComponent.class);
+    public static final ComponentKey<IDifficultyComponent> DIFFICULTY_SETTING =
+            ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "difficulty"), IDifficultyComponent.class);
     @Override
     public void onInitialize(){
         ModDimensions.register();
@@ -61,7 +60,7 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
         registry.registerForPlayers(DUNGEONS_TICK, player -> new DungeonsTick(player), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(DIFFICULTY_SETTING, player -> new DifficultyComponent(player), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(PORTAL_POS, player -> new DungeonsPortalPos(), RespawnCopyStrategy.ALWAYS_COPY);
-
     }
 }

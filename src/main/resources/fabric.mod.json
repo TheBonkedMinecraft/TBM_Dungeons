@@ -12,7 +12,8 @@
   "custom": {
     "cardinal-components": [
       "tbm_dungeons:dungeons_tick",
-      "tbm_dungeons:portal_pos"
+      "tbm_dungeons:portal_pos",
+      "tbm_dungeons:difficulty"
     ]
   },
   "license": "All-Rights-Reserved",

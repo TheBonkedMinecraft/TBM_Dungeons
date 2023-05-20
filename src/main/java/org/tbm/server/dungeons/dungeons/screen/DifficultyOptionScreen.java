@@ -7,13 +7,18 @@ import io.wispforest.owo.ui.component.LabelComponent;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
+import org.tbm.server.dungeons.dungeons.Dungeons;
+import org.tbm.server.dungeons.dungeons.component.IDifficultyComponent;
 
 public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
 
     String[] difficulties = {"Normal", "Hard", "Extreme", "Easy"};
+    public final MinecraftClient playerMc = MinecraftClient.getInstance();
+
 
     String[] descriptions = {
             "§l- NORMAL MODE (line1)\n§l- Line 2\n§l- Line 3\n§l- Line 4", // NORMAL MODE
@@ -35,6 +40,10 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
     }
     @Override
     protected void build(FlowLayout rootComponent) {
+        if (playerMc.player != null) {
+            IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(playerMc.player);
+            this.pos = difficulty.getValue();
+        }
         rootComponent
                 .surface(Surface.VANILLA_TRANSLUCENT)
                 .horizontalAlignment(HorizontalAlignment.CENTER)
@@ -64,7 +73,7 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
         );
 
         rootComponent.child(
-                Components.label(Text.literal(descriptions[pos]).formatted(Formatting.BOLD))
+                Components.label(Text.literal(descriptions[this.pos]).formatted(Formatting.BOLD))
                         .sizing(Sizing.content(), Sizing.content())
                         .positioning(Positioning.relative(50, 55))
                         .id("description")
@@ -76,16 +85,16 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
 
         rootComponent.child(
                 Components.button(Text.literal("Normal").formatted(Formatting.BOLD), (ButtonComponent button) -> {
-                            if (pos == 3) {
-                                pos = 0;
-                                button.setMessage(Text.literal(difficulties[pos]).formatted(Formatting.BOLD));
+                            if (this.pos == 3) {
+                                this.pos = 0;
+                                button.setMessage(Text.literal(difficulties[this.pos]).formatted(Formatting.BOLD));
                                 button.setWidth(56);
-                                label.text(Text.literal(descriptions[pos]));
+                                label.text(Text.literal(descriptions[this.pos]));
                             } else {
-                                pos++;
-                                button.setMessage(Text.literal(difficulties[pos]).formatted(Formatting.BOLD));
+                                this.pos++;
+                                button.setMessage(Text.literal(difficulties[this.pos]).formatted(Formatting.BOLD));
                                 button.setWidth(56);
-                                label.text(Text.literal(descriptions[pos]));
+                                label.text(Text.literal(descriptions[this.pos]));
                             }
                         })      .positioning(Positioning.relative(50, 38))
                         .sizing(Sizing.fixed(56), Sizing.fixed(20))
@@ -94,8 +103,14 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
 
         rootComponent.child(
                 Components.button(Text.literal("Done").formatted(Formatting.BOLD), (ButtonComponent button) -> {
-                            // retrieve data
-                            String retrievedDifficulty = difficulties[pos];
+                            if (playerMc.player != null) {
+                                System.out.println(this.pos);
+                                IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(playerMc.player);
+                                difficulty.setValue(this.pos);
+                                Dungeons.DIFFICULTY_SETTING.sync(playerMc.player);
+                                System.out.println("Synced");
+                            }
+                            String retrievedDifficulty = difficulties[this.pos];
                             System.out.println("DATA:\nDifficulty: [" + retrievedDifficulty + "]");
                             close();
                         })
