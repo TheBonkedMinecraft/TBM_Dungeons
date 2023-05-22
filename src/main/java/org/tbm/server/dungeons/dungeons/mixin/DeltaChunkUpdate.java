@@ -11,10 +11,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketDungeons;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketEnd;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketNether;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketOverworld;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateDungeons;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateEnd;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateNether;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateOverworld;
 
 import java.util.Objects;
 
@@ -35,7 +35,7 @@ public abstract class DeltaChunkUpdate {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketOverworld(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateOverworld(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
                     }
                 }
             }
@@ -43,7 +43,7 @@ public abstract class DeltaChunkUpdate {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketNether(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateNether(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
                     }
                 }
             }
@@ -51,7 +51,7 @@ public abstract class DeltaChunkUpdate {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketEnd(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateEnd(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
                     }
                 }
             }
@@ -59,7 +59,7 @@ public abstract class DeltaChunkUpdate {
             for (int dx = -4; dx <= 4; dx++) {
                 for (int dy = -4; dy <= 4; dy++) {
                     for (int dz = -4; dz <= 4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketDungeons(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateDungeons(new BlockPos(client.player.getPos().getX() + dx, client.player.getPos().getY() + dy, client.player.getPos().getZ() + dz)));
                     }
                 }
             }

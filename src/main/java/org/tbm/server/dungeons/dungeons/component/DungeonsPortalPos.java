@@ -6,7 +6,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 
-public class DungeonsPortalPos implements BlockPosComponent, AutoSyncedComponent {
+public class DungeonsPortalPos implements IDungeonsPortalPosComponent, AutoSyncedComponent {
 
     private BlockPos pos = new BlockPos(0,0,0);
 

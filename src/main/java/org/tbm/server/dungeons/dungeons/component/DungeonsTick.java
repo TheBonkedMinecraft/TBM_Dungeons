@@ -7,7 +7,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.tbm.server.dungeons.dungeons.Dungeons;
 
-public class DungeonsTick implements IntComponent, AutoSyncedComponent {
+public class DungeonsTick implements IDungeonsTickComponent, AutoSyncedComponent {
     private int value = 72000;
     private final Object provider;
 

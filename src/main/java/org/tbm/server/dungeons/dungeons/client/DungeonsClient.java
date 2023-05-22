@@ -23,11 +23,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import org.tbm.server.dungeons.dungeons.Dungeons;
-import org.tbm.server.dungeons.dungeons.component.IntComponent;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketDungeons;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketEnd;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketNether;
-import org.tbm.server.dungeons.dungeons.packet.RequestStatePacketOverworld;
+import org.tbm.server.dungeons.dungeons.component.IDifficultyComponent;
+import org.tbm.server.dungeons.dungeons.component.IDungeonsTickComponent;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateDungeons;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateEnd;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateNether;
+import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateOverworld;
 import org.tbm.server.dungeons.dungeons.screen.DifficultyOptionScreen;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 
@@ -47,15 +48,16 @@ public class DungeonsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         KeyBindingHelper.registerKeyBinding(BEGIN);
-        AtomicBoolean inDungeon = new AtomicBoolean(false);
+        AtomicBoolean inDungeon = new AtomicBoolean(true);
         AtomicBoolean isHudLoaded = new AtomicBoolean(false);
         ClientTickEvents.END_WORLD_TICK.register(world ->{
             inDungeon.set(world.getRegistryKey() == ModDimensions.DUNGEONS_KEY);
         });
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if(inDungeon.get() && client.player != null){
-                IntComponent syncedTime = Dungeons.DUNGEONS_TICK.get(client.player);
+            if (inDungeon.get() && client.player != null) {
+                IDungeonsTickComponent syncedTime = Dungeons.DUNGEONS_TICK.get(client.player);
+                Dungeons.DUNGEONS_TICK.sync(client.player);
                 if (!isHudLoaded.get()) {
                     Hud.add(new Identifier("tbm_dungeons","time"),() ->
                         Containers.verticalFlow(Sizing.content(), Sizing.content())
@@ -137,7 +139,7 @@ public class DungeonsClient implements ClientModInitializer {
             for (int dx=-4; dx<=4; dx++) {
                 for (int dy=-4; dy<=4; dy++) {
                     for (int dz=-4; dz<=4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketOverworld(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateOverworld(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
                     }
                 }
             }
@@ -145,7 +147,7 @@ public class DungeonsClient implements ClientModInitializer {
             for (int dx=-4; dx<=4; dx++) {
                 for (int dy=-4; dy<=4; dy++) {
                     for (int dz=-4; dz<=4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketNether(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateNether(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
                     }
                 }
             }
@@ -153,7 +155,7 @@ public class DungeonsClient implements ClientModInitializer {
             for (int dx=-4; dx<=4; dx++) {
                 for (int dy=-4; dy<=4; dy++) {
                     for (int dz=-4; dz<=4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketEnd(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateEnd(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
                     }
                 }
             }
@@ -161,7 +163,7 @@ public class DungeonsClient implements ClientModInitializer {
             for (int dx=-4; dx<=4; dx++) {
                 for (int dy=-4; dy<=4; dy++) {
                     for (int dz=-4; dz<=4; dz++) {
-                        STATE_CHANNEL.clientHandle().send(new RequestStatePacketDungeons(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
+                        STATE_CHANNEL.clientHandle().send(new C2SRequestStateDungeons(new BlockPos(mc.player.getPos().getX() + dx, mc.player.getPos().getY() + dy, mc.player.getPos().getZ() + dz)));
                     }
                 }
             }
