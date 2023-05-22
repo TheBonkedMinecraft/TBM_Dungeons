@@ -5,31 +5,32 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.math.BlockPos;
 import org.tbm.server.dungeons.dungeons.Dungeons;
 
-public class DungeonsPortalPos implements IDungeonsPortalPosComponent, AutoSyncedComponent {
+public class LastUpdatedDifficulty implements ILastUpdatedDifficultyComponent, AutoSyncedComponent {
 
-    private BlockPos pos = new BlockPos(0,0,0);
+    long value = 0;
 
     Object provider;
 
-    @Override
-    public BlockPos getBlockPos() {
-        return this.pos;
-    }
-    public DungeonsPortalPos(PlayerEntity player) {
+    public LastUpdatedDifficulty(PlayerEntity player) {
         this.provider = player;
     }
 
     @Override
-    public void setBlockPos(BlockPos pos) {
-        this.pos = pos;
-        Dungeons.PORTAL_POS.sync(this.provider);
+    public long getValue() {
+        return this.value;
     }
 
-    @Override public void readFromNbt(NbtCompound tag) { this.pos = BlockPos.fromLong(tag.getLong("dungeonsPos")); }
-    @Override public void writeToNbt(NbtCompound tag) { tag.putLong("dungeonsPos", this.pos.asLong()); }
+    @Override
+    public void setValue(long value) {
+        this.value = value;
+        Dungeons.LAST_UPDATED.sync(this.provider);
+    }
+
+    @Override public void readFromNbt(NbtCompound tag) { this.value = tag.getLong("value"); }
+    @Override public void writeToNbt(NbtCompound tag) { tag.putLong("value", this.value); }
+
     @Override
     public boolean shouldSyncWith(ServerPlayerEntity player) {
         return player == this.provider;
@@ -38,13 +39,11 @@ public class DungeonsPortalPos implements IDungeonsPortalPosComponent, AutoSynce
     public void writeSyncPacket(PacketByteBuf buf, ServerPlayerEntity player) {
         this.writeSyncPacket(buf);
     }
-
     private void writeSyncPacket(PacketByteBuf buf) {
-        buf.writeBlockPos(this.pos);
+        buf.writeVarLong(this.value);
     }
-
     @Override
     public void applySyncPacket(PacketByteBuf buf) {
-        this.pos = buf.readBlockPos();
+        this.value = buf.readVarLong();
     }
 }

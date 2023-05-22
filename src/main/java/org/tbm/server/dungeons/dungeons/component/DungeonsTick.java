@@ -24,8 +24,12 @@ public class DungeonsTick implements IDungeonsTickComponent, AutoSyncedComponent
     @Override public void decrement() {
         if (this.value >= 0) {
             this.value--;
-            Dungeons.DUNGEONS_TICK.sync(this.provider); // assuming MAGIK is the right key for this component
+            Dungeons.DUNGEONS_TICK.sync(this.provider);
         }
+    }
+    @Override
+    public boolean shouldSyncWith(ServerPlayerEntity player) {
+        return player == this.provider;
     }
     @Override public void readFromNbt(NbtCompound tag) { this.value = tag.getInt("value"); }
     @Override public void writeToNbt(NbtCompound tag) { tag.putInt("value", this.value); }

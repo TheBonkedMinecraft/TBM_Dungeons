@@ -36,6 +36,8 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
             ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "difficulty"), IDifficultyComponent.class);
     public static final ComponentKey<IModifiedMobComponent> MODIFIED_MOB_TRACK =
             ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "modified_mob"), IModifiedMobComponent.class);
+    public static final ComponentKey<ILastUpdatedDifficultyComponent> LAST_UPDATED =
+            ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "last_updated"), ILastUpdatedDifficultyComponent.class);
     @Override
     public void onInitialize(){
         ModDimensions.register();
@@ -65,7 +67,9 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
         });
         STATE_CHANNEL.registerServerbound(C2SDifficultyUpdate.class, (packet, server) -> {
             IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(server.player());
+            ILastUpdatedDifficultyComponent lastUpdate = Dungeons.LAST_UPDATED.get(server.player());
             difficulty.setValue(packet.difficulty());
+            lastUpdate.setValue(System.currentTimeMillis());
         });
 
         ServerEntityEvents.ENTITY_LOAD.register(((entity, world) -> {
@@ -81,8 +85,9 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
         registry.registerForPlayers(DUNGEONS_TICK, player -> new DungeonsTick(player), RespawnCopyStrategy.ALWAYS_COPY);
-        registry.registerForPlayers(PORTAL_POS, player -> new DungeonsPortalPos(), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(PORTAL_POS, player -> new DungeonsPortalPos(player), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(DIFFICULTY_SETTING, player -> new DifficultyComponent(player), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerForPlayers(LAST_UPDATED, player -> new LastUpdatedDifficulty(player), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerFor(HostileEntity.class, MODIFIED_MOB_TRACK, entity -> new ModifiedMobTrack());
     }
 }

@@ -8,14 +8,19 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
 import org.tbm.server.dungeons.dungeons.Dungeons;
 import org.tbm.server.dungeons.dungeons.component.IDifficultyComponent;
+import org.tbm.server.dungeons.dungeons.component.ILastUpdatedDifficultyComponent;
 import org.tbm.server.dungeons.dungeons.packet.C2SDifficultyUpdate;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
 
@@ -28,13 +33,17 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
             "§l- EXTREME MODE (line1)\n§l- Line 2\n§l- Line 3\n§l- Line 4",
     };
 
+    AtomicLong lastUpdate = new AtomicLong(0);
+
     AtomicInteger pos = new AtomicInteger(1);
 
     @Override
     protected @NotNull OwoUIAdapter<FlowLayout> createAdapter() {
         if (playerMc.player != null) {
             IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(playerMc.player);
+            ILastUpdatedDifficultyComponent lastUpdated = Dungeons.LAST_UPDATED.get(playerMc.player);
             pos.set(difficulty.getValue());
+            lastUpdate.set(lastUpdated.getValue());
         }
         return OwoUIAdapter.create(this, Containers::verticalFlow);
     }
@@ -48,7 +57,7 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
 
         rootComponent.child(
                 Containers.verticalFlow(Sizing.content(), Sizing.content())
-                        .child(Components.box(Sizing.fixed(160), Sizing.fixed(160)))
+                        .child(Components.box(Sizing.fill(70), Sizing.fill(60)))
                         .padding(Insets.of(4))
                         .surface(Surface.DARK_PANEL)
                         .verticalAlignment(VerticalAlignment.CENTER)
@@ -62,13 +71,13 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
                         .verticalAlignment(VerticalAlignment.CENTER)
                         .horizontalAlignment(HorizontalAlignment.CENTER)
                         .sizing(Sizing.content(), Sizing.content())
-                        .positioning(Positioning.relative(50, 30))
+                        .positioning(Positioning.relative(50, 10))
         );
 
         rootComponent.child(
                 Components.label(Text.literal(descriptions[pos.get()]).formatted(Formatting.BOLD))
                         .sizing(Sizing.content(), Sizing.content())
-                        .positioning(Positioning.relative(50, 55))
+                        .positioning(Positioning.relative(50, 45))
                         .id("description")
         );
 
@@ -85,18 +94,23 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
                             button.setWidth(56);
                             label.text(Text.literal(descriptions[pos.get()]));
                         })
-                        .positioning(Positioning.relative(50, 38))
+                        .positioning(Positioning.relative(50, 28))
                         .sizing(Sizing.fixed(56), Sizing.fixed(20))
                         .id("difficulty")
         );
-
-        rootComponent.child(
+        if (System.currentTimeMillis() - lastUpdate.get() < 604800000) {
+            rootComponent.child(Components.item(Items.CLOCK.getDefaultStack()).sizing(Sizing.fixed(12)).positioning(Positioning.relative(50, 70)));
+            Date currentDate = new Date(lastUpdate.get() + 604800000);
+            rootComponent.child(Components.label(Text.literal("Next change available on: " + DateFormat.getInstance().format(currentDate)).formatted(Formatting.WHITE)).positioning(Positioning.relative(50, 75)));
+        } else {
+            rootComponent.child(
                 Components.button(Text.literal("Done").formatted(Formatting.BOLD), (ButtonComponent button) -> {
                             Dungeons.STATE_CHANNEL.clientHandle().send(new C2SDifficultyUpdate(pos.get()));
                             close();
                         })
                         .sizing(Sizing.fixed(56), Sizing.fixed(20))
                         .positioning(Positioning.relative(50, 70))
-        );
+            );
+        }
     }
 }

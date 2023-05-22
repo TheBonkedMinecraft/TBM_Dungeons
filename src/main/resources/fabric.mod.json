@@ -14,7 +14,8 @@
       "tbm_dungeons:dungeons_tick",
       "tbm_dungeons:portal_pos",
       "tbm_dungeons:difficulty",
-      "tbm_dungeons:modified_mob"
+      "tbm_dungeons:modified_mob",
+      "tbm_dungeons:last_updated"
     ]
   },
   "license": "All-Rights-Reserved",
