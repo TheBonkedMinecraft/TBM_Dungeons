@@ -19,7 +19,7 @@ public class MagnetEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity livingEntity, int pAmplifier) {
         Vec3d playerPos = livingEntity.getPos().add(0, 0.75, 0);
-        Box itemRange = new Box(playerPos, playerPos).expand(pAmplifier == 1 ? 6 : 12);
+        Box itemRange = new Box(playerPos, playerPos).expand(Math.min(6 + pAmplifier, 32));
         Predicate<ItemEntity> alwaysTrue = ItemEntity -> !ItemEntity.cannotPickup();
         List<ItemEntity> items = livingEntity.getEntityWorld().getEntitiesByClass(ItemEntity.class, itemRange, alwaysTrue);
 
@@ -30,12 +30,11 @@ public class MagnetEffect extends StatusEffect {
                 if (pulled++ > 200) {
                     break;
                 }
-
                 Vec3d motion = playerPos.subtract(item.getPos().add(0, item.getHeight() / 2, 0));
                 if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
                     motion = motion.normalize();
                 }
-                item.move(MovementType.SELF, motion.multiply(0.6));
+                item.move(MovementType.PLAYER, motion.multiply(0.45));
             }
         }
     }

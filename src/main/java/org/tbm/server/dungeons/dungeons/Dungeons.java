@@ -7,6 +7,11 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import io.wispforest.owo.network.OwoNetChannel;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -29,6 +34,8 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
             ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "portal_pos"), IDungeonsPortalPosComponent.class);
     public static final ComponentKey<IDifficultyComponent> DIFFICULTY_SETTING =
             ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "difficulty"), IDifficultyComponent.class);
+    public static final ComponentKey<IModifiedMobComponent> MODIFIED_MOB_TRACK =
+            ComponentRegistry.getOrCreate(new Identifier("tbm_dungeons", "modified_mob"), IModifiedMobComponent.class);
     @Override
     public void onInitialize(){
         ModDimensions.register();
@@ -60,11 +67,22 @@ public class Dungeons implements ModInitializer, EntityComponentInitializer {
             IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(server.player());
             difficulty.setValue(packet.difficulty());
         });
+
+        ServerEntityEvents.ENTITY_LOAD.register(((entity, world) -> {
+            if(entity.isPlayer()){
+                IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(entity);
+                System.out.println("Diff on entity load: " + difficulty.getValue());
+                ((PlayerEntity) entity).clearStatusEffects();
+                ((PlayerEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 999999, 0, true, false, false));
+
+            }
+        }));
     }
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
         registry.registerForPlayers(DUNGEONS_TICK, player -> new DungeonsTick(player), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(PORTAL_POS, player -> new DungeonsPortalPos(), RespawnCopyStrategy.ALWAYS_COPY);
         registry.registerForPlayers(DIFFICULTY_SETTING, player -> new DifficultyComponent(player), RespawnCopyStrategy.ALWAYS_COPY);
+        registry.registerFor(HostileEntity.class, MODIFIED_MOB_TRACK, entity -> new ModifiedMobTrack());
     }
 }
