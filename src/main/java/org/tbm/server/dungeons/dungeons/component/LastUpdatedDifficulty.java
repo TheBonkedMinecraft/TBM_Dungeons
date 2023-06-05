@@ -5,7 +5,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.tbm.server.dungeons.dungeons.Dungeons;
 
 public class LastUpdatedDifficulty implements ILastUpdatedDifficultyComponent, AutoSyncedComponent {
 
@@ -25,7 +24,7 @@ public class LastUpdatedDifficulty implements ILastUpdatedDifficultyComponent, A
     @Override
     public void setValue(long value) {
         this.value = value;
-        Dungeons.LAST_UPDATED.sync(this.provider);
+        ModComponents.LAST_UPDATED.sync(this.provider);
     }
 
     @Override public void readFromNbt(NbtCompound tag) { this.value = tag.getLong("value"); }

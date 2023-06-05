@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.tbm.server.dungeons.dungeons.Dungeons;
 import org.tbm.server.dungeons.dungeons.component.IDifficultyComponent;
 import org.tbm.server.dungeons.dungeons.component.ILastUpdatedDifficultyComponent;
+import org.tbm.server.dungeons.dungeons.component.ModComponents;
 import org.tbm.server.dungeons.dungeons.packet.C2SDifficultyUpdate;
 
 import java.text.DateFormat;
@@ -40,8 +41,8 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
     @Override
     protected @NotNull OwoUIAdapter<FlowLayout> createAdapter() {
         if (playerMc.player != null) {
-            IDifficultyComponent difficulty = Dungeons.DIFFICULTY_SETTING.get(playerMc.player);
-            ILastUpdatedDifficultyComponent lastUpdated = Dungeons.LAST_UPDATED.get(playerMc.player);
+            IDifficultyComponent difficulty = ModComponents.DIFFICULTY_SETTING.get(playerMc.player);
+            ILastUpdatedDifficultyComponent lastUpdated = ModComponents.LAST_UPDATED.get(playerMc.player);
             pos.set(difficulty.getValue());
             lastUpdate.set(lastUpdated.getValue());
         }

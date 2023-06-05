@@ -5,7 +5,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.tbm.server.dungeons.dungeons.Dungeons;
 
 public class DungeonsTick implements IDungeonsTickComponent, AutoSyncedComponent {
     private int value = 72000;
@@ -20,11 +19,11 @@ public class DungeonsTick implements IDungeonsTickComponent, AutoSyncedComponent
     @Override
     public void setValue(int value) {
         this.value = value;
-    };
+    }
     @Override public void decrement() {
         if (this.value >= 0) {
             this.value--;
-            Dungeons.DUNGEONS_TICK.sync(this.provider);
+            ModComponents.DUNGEONS_TICK.sync(this.provider);
         }
     }
     @Override

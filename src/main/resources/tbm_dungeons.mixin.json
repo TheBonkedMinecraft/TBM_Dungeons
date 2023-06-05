@@ -7,8 +7,7 @@
     "BrewingRecipeRegistryMixin"
   ],
   "client": [
-    "DeltaChunkUpdate",
-    "DisableExperimentalWarning"
+    "DeltaChunkUpdate"
   ],
   "injectors": {
     "defaultRequire": 1

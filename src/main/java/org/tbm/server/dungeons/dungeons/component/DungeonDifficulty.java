@@ -5,16 +5,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.tbm.server.dungeons.dungeons.Dungeons;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class DifficultyComponent implements IDifficultyComponent, AutoSyncedComponent {
+public class DungeonDifficulty implements IDifficultyComponent, AutoSyncedComponent {
 
     private final AtomicInteger value = new AtomicInteger(1);
     private final Object provider;
 
-    public DifficultyComponent(PlayerEntity player) {
+    public DungeonDifficulty(PlayerEntity player) {
         this.provider = player;
     }
     @Override
@@ -25,7 +24,7 @@ public class DifficultyComponent implements IDifficultyComponent, AutoSyncedComp
     @Override
     public void setValue(int value) {
         this.value.set(value);
-        Dungeons.DIFFICULTY_SETTING.sync(this.provider);
+        ModComponents.DIFFICULTY_SETTING.sync(this.provider);
     }
 
     @Override public void readFromNbt(NbtCompound tag) { this.value.set(tag.getInt("value")); }

@@ -6,7 +6,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import org.tbm.server.dungeons.dungeons.Dungeons;
 
 public class DungeonsPortalPos implements IDungeonsPortalPosComponent, AutoSyncedComponent {
 
@@ -25,7 +24,7 @@ public class DungeonsPortalPos implements IDungeonsPortalPosComponent, AutoSynce
     @Override
     public void setBlockPos(BlockPos pos) {
         this.pos = pos;
-        Dungeons.PORTAL_POS.sync(this.provider);
+        ModComponents.PORTAL_POS.sync(this.provider);
     }
 
     @Override public void readFromNbt(NbtCompound tag) { this.pos = BlockPos.fromLong(tag.getLong("dungeonsPos")); }
