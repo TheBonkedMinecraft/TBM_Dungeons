@@ -1,0 +1,184 @@
+package org.tbm.server.dungeons.dungeons.professions.networking;
+
+import org.tbm.server.dungeons.dungeons.professions.Constants;
+import org.tbm.server.dungeons.dungeons.professions.ProfessionsFabric;
+import org.tbm.server.dungeons.dungeons.professions.client.screen.OccupationScreen;
+import org.tbm.server.dungeons.dungeons.professions.profession.Profession;
+import org.tbm.server.dungeons.dungeons.professions.profession.ProfessionSerializer;
+import org.tbm.server.dungeons.dungeons.professions.profession.progression.Occupation;
+import org.tbm.server.dungeons.dungeons.professions.util.ActionDisplay;
+import org.tbm.server.dungeons.dungeons.professions.util.LevelDisplay;
+import com.mojang.util.UUIDTypeAdapter;
+import io.netty.buffer.Unpooled;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@Environment(EnvType.CLIENT)
+public class ClientHandler implements ClientNetworking {
+
+    private static final Map<ResourceLocation, ClientPlayNetworking.PlayChannelHandler> subChannelReceivers = new HashMap<>();
+    private static final Map<CommandButtons, CommandButtonHandler> buttonReceivers = new HashMap<>();
+    private static final Map<CommandButtons, Runnable> buttonSenders = new HashMap<>();
+
+
+    public static void receivePacket(Minecraft minecraft, ClientPacketListener listener, FriendlyByteBuf buf, PacketSender sender) {
+        ResourceLocation subChannel = buf.readResourceLocation();
+        ClientPlayNetworking.PlayChannelHandler handler = subChannelReceivers.getOrDefault(subChannel, null);
+        if (handler != null) {
+            handler.receive(minecraft, listener, buf, sender);
+        }
+    }
+
+    static {
+        setupSubChannels();
+        setupButtonHandlers();
+        setupButtonSenders();
+    }
+
+    private static void setupSubChannels() {
+        subChannelReceivers.put(Constants.OPEN_UI_RESPONSE, (client, handler, buf, responseSender) -> {
+            List<Occupation> occupations = ProfessionSerializer.fromNetwork(buf);
+            //ProfessionsFabric.getInstance().getPlayerManager().addClientPlayer(client.player.getUUID(), occupations);
+            client.execute(() -> client.setScreen(new OccupationScreen<>(occupations, client, OccupationScreen::createOccupationEntries, null)));
+        });
+        subChannelReceivers.put(Constants.INFO_BUTTON_RESPONSE, (client, handler, buf, responseSender) -> {
+            int size = buf.readVarInt();
+            List<ActionDisplay> displays = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                displays.add(ActionDisplay.fromNetwork(buf));
+            }
+            client.execute(() -> client.setScreen(new OccupationScreen<>(displays, client, OccupationScreen::createInfoEntries, CommandButtons.INFO)));
+        });
+        subChannelReceivers.put(Constants.CLICK_PROFESSION_BUTTON_RESPONSE, (client, handler, buf, responseSender) -> {
+            CommandButtons button = buf.readEnum(CommandButtons.class);
+            CommandButtonHandler buttonHandler = buttonReceivers.getOrDefault(button, null);
+            if (buttonHandler != null) {
+                buttonHandler.commandButtonClicked(client, buf);
+            }
+        });
+        subChannelReceivers.put(Constants.SYNCHRONIZE_REQUEST, (client, handler, buf, responseSender) -> {
+            if (!client.isLocalServer()) {
+                FriendlyByteBuf buf1 = new FriendlyByteBuf(Unpooled.buffer());
+                buf1.writeResourceLocation(Constants.SYNCHRONIZE_RESPONSE);
+                responseSender.sendPacket(Constants.MOD_CHANNEL, buf1);
+            }
+        });
+        subChannelReceivers.put(Constants.SYNCHRONIZE_DATA, (client, handler, buf, responseSender) -> {
+            List<Occupation> occupations = ProfessionSerializer.fromNetwork(buf);
+            if (!client.hasSingleplayerServer()) {
+                ProfessionsFabric.getInstance().getPlayerManager().addClientPlayer(UUIDTypeAdapter.fromString(client.getUser().getUuid()), occupations);
+            }
+        });
+    }
+
+    private static void setupButtonSenders() {
+        buttonSenders.put(CommandButtons.JOIN, () -> {
+            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+            buf.writeResourceLocation(Constants.CLICK_PROFESSION_BUTTON_REQUEST);
+            buf.writeEnum(CommandButtons.JOIN);
+            ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+        });
+        buttonSenders.put(CommandButtons.LEAVE, () -> {
+            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+            buf.writeResourceLocation(Constants.CLICK_PROFESSION_BUTTON_REQUEST);
+            buf.writeEnum(CommandButtons.LEAVE);
+            ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+        });
+        buttonSenders.put(CommandButtons.INFO, () -> {
+            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+            buf.writeResourceLocation(Constants.CLICK_PROFESSION_BUTTON_REQUEST);
+            buf.writeEnum(CommandButtons.INFO);
+            ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+        });
+        buttonSenders.put(CommandButtons.TOP, () -> {
+            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+            buf.writeResourceLocation(Constants.CLICK_PROFESSION_BUTTON_REQUEST);
+            buf.writeEnum(CommandButtons.TOP);
+            ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+        });
+    }
+
+    private static void setupButtonHandlers() {
+        buttonReceivers.put(CommandButtons.JOIN, (minecraft, buf) -> {
+            List<Profession> professions = Profession.fromNetwork(buf);
+            minecraft.execute(() -> {
+                minecraft.setScreen(new OccupationScreen<>(professions, minecraft, (screen, client, display) -> {
+                    return OccupationScreen.createProfessionEntries(screen, client, display, CommandButtons.JOIN);
+                }, CommandButtons.JOIN));
+            });
+        });
+        buttonReceivers.put(CommandButtons.LEAVE, (minecraft, buf) -> {
+            List<Profession> professions = ProfessionSerializer.fromNetwork(buf).stream().map(Occupation::getProfession).collect(Collectors.toList());
+            minecraft.execute(() -> minecraft.setScreen(new OccupationScreen<>(professions, minecraft, (screen, client, display) -> {
+                return OccupationScreen.createProfessionEntries(screen, client, display, CommandButtons.LEAVE);
+            }, CommandButtons.LEAVE)));
+        });
+        buttonReceivers.put(CommandButtons.INFO, (minecraft, buf) -> {
+            List<Profession> professions = Profession.fromNetwork(buf);
+            minecraft.execute(() -> {
+                minecraft.setScreen(new OccupationScreen<>(professions, minecraft, (screen, client, display) -> {
+                    return OccupationScreen.createProfessionEntries(screen, client, display, CommandButtons.INFO);
+                }, CommandButtons.INFO));
+            });
+        });
+        buttonReceivers.put(CommandButtons.TOP, (minecraft, buf) -> {
+            int read = buf.readVarInt();
+            List<LevelDisplay> displays = new ArrayList<>();
+            for (int i = 0; i < read; i++) {
+                displays.add(new LevelDisplay(buf.readUUID(), buf.readVarInt()));
+            }
+            minecraft.execute(() -> {
+                minecraft.setScreen(new OccupationScreen<>(displays, minecraft, OccupationScreen::createTopEntries, CommandButtons.TOP));
+            });
+        });
+    }
+
+    public static void sendButtonPacket(CommandButtons buttons) {
+        Runnable runnable = buttonSenders.getOrDefault(buttons, () -> {
+        });
+        runnable.run();
+    }
+
+    public void sendOccupationPacket() {
+        FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+        buf.writeResourceLocation(Constants.OPEN_UI_REQUEST);
+        ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+    }
+
+    public void attemptJoinPacket(ResourceLocation location) {
+        FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+        buf.writeResourceLocation(Constants.JOIN_BUTTON_REQUEST);
+        buf.writeResourceLocation(location);
+        ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+    }
+
+    public void attemptLeavePacket(ResourceLocation location) {
+        FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+        buf.writeResourceLocation(Constants.LEAVE_BUTTON_REQUEST);
+        buf.writeResourceLocation(location);
+        ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+    }
+
+    public void attemptInfoPacket(ResourceLocation location) {
+        FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.buffer());
+        buf.writeResourceLocation(Constants.INFO_BUTTON_REQUEST);
+        buf.writeResourceLocation(location);
+        ClientPlayNetworking.send(Constants.MOD_CHANNEL, buf);
+    }
+
+    public interface CommandButtonHandler {
+        void commandButtonClicked(Minecraft minecraft, FriendlyByteBuf buf);
+    }
+}
