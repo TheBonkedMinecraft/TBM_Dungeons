@@ -7,6 +7,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+    mavenCentral()
     maven {url = "https://maven.kyrptonaught.dev"}
     maven {url = "https://maven.wispforest.io" }
     maven {
@@ -16,6 +17,14 @@ repositories {
     maven {
         name = 'ParchmentMC'
         url = 'https://maven.parchmentmc.org'
+    }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots"}
+    maven { url 'https://jitpack.io' }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
     exclusiveContent {
         forRepository {
@@ -36,12 +45,7 @@ loom {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    //mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    mappings loom.layered() {
-        mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
-        //officialMojangMappings()
-        //parchment("org.parchmentmc.data:parchment-1.19.2:2022.11.27")
-    }
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.76.0+1.19.2"
     modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta63-1.19.X'
@@ -54,6 +58,10 @@ dependencies {
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:5.0.2"
     modCompileOnly 'org.spongepowered:configurate-hocon:4.0.0'
     include "io.wispforest:owo-sentinel:${project.owo_version}"
+    compileOnly('net.luckperms:api:5.4')
+    modImplementation(files("lib/OctoEconomyApi-1.1.0.jar"))
+    modImplementation 'me.lucko:fabric-permissions-api:0.2-SNAPSHOT'
+    include 'me.lucko:fabric-permissions-api:0.2-SNAPSHOT'
 }
 
 processResources {
