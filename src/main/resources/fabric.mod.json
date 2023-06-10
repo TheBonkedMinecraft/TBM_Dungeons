@@ -29,7 +29,7 @@
       "org.tbm.server.dungeons.dungeons.Dungeons"
     ],
     "cardinal-components": [
-      "org.tbm.server.dungeons.dungeons.Dungeons"
+      "org.tbm.server.dungeons.dungeons.component.ModComponents"
     ]
   },
   "mixins": [
