@@ -4,5 +4,15 @@
   "item.tbm_dungeons.heart_of_attraction": "Heart of Attraction",
   "key.dungeons.difficulty.show": "Open Difficulty Menu",
   "key.state_update.reveal": "Sync Blockstates",
-  "msg.request": "Requesting Blockstates"
+  "msg.request": "Requesting Blockstates",
+  "item.tbm_dungeons.mythril_helmet": "Mythril Helmet",
+  "item.tbm_dungeons.mythril_chestplate": "Mythril Chestplate",
+  "item.tbm_dungeons.mythril_leggings": "Mythril Leggings",
+  "item.tbm_dungeons.mythril_boots": "Mythril Boots",
+  "block.tbm_dungeons.gem_infusing_station": "Gem Infusing Station",
+  "tbm_dungeons.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "tbm_dungeons.tooltip.liquid.amount": "%s mB",
+  "block.tbm_dungeons.soap_water": "Soap Water",
+  "item.tbm_dungeons.soap_water_bucket": "Soap Water Bucket",
+  "block.minecraft.empty": "Air"
 }

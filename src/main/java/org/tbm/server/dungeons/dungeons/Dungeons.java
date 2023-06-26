@@ -11,11 +11,16 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
+import org.tbm.server.dungeons.dungeons.block.ModBlocks;
+import org.tbm.server.dungeons.dungeons.block.entity.ModBlockEntities;
 import org.tbm.server.dungeons.dungeons.component.*;
 import org.tbm.server.dungeons.dungeons.effect.ModEffects;
+import org.tbm.server.dungeons.dungeons.fluids.ModFluids;
 import org.tbm.server.dungeons.dungeons.item.ModItems;
 import org.tbm.server.dungeons.dungeons.packet.*;
 import org.tbm.server.dungeons.dungeons.potion.ModPotions;
+import org.tbm.server.dungeons.dungeons.recipe.ModRecipes;
+import org.tbm.server.dungeons.dungeons.screen.ModScreenHandlers;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModPortals;
 
@@ -25,10 +30,15 @@ public class Dungeons implements ModInitializer {
     @Override
     public void onInitialize(){
         ModDimensions.register();
+        ModBlocks.registerModBlocks();
         ModPortals.registerPortals();
         ModItems.registerModItems();
         ModEffects.registerEffects();
         ModPotions.registerPotions();
+        ModFluids.register();
+        ModBlockEntities.registerBlockEntities();
+        ModScreenHandlers.registerAllScreenHandlers();
+        ModRecipes.registerRecipes();
         STATE_CHANNEL.registerServerbound(C2SRequestStateOverworld.class, (packet, server) -> {
             if (server.runtime().getWorld(RegistryKey.of(Registry.WORLD_KEY, new Identifier("minecraft","overworld"))).getBlockState(packet.pos()).toString().contains("everycomp")) {
                 server.netHandler().connection.send(new BlockUpdateS2CPacket(packet.pos(), server.runtime().getWorld(World.OVERWORLD).getBlockState(packet.pos())));
@@ -55,14 +65,12 @@ public class Dungeons implements ModInitializer {
             difficulty.setValue(packet.difficulty());
             lastUpdate.setValue(System.currentTimeMillis());
         });
-
         ServerEntityEvents.ENTITY_LOAD.register(((entity, world) -> {
             if(entity.isPlayer()){
                 IDifficultyComponent difficulty = ModComponents.DIFFICULTY_SETTING.get(entity);
                 System.out.println("Diff on entity load: " + difficulty.getValue());
                 ((PlayerEntity) entity).clearStatusEffects();
                 ((PlayerEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 999999, 0, true, false, false));
-
             }
         }));
     }

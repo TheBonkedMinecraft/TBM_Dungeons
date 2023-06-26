@@ -3,23 +3,28 @@ package org.tbm.server.dungeons.dungeons.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateDungeons;
-import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateEnd;
-import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateNether;
-import org.tbm.server.dungeons.dungeons.packet.C2SRequestStateOverworld;
+import org.tbm.server.dungeons.dungeons.fluids.ModFluids;
+import org.tbm.server.dungeons.dungeons.packet.*;
 import org.tbm.server.dungeons.dungeons.screen.DifficultyOptionScreen;
+import org.tbm.server.dungeons.dungeons.screen.GemInfusingScreen;
+import org.tbm.server.dungeons.dungeons.screen.ModScreenHandlers;
 
 import java.util.Objects;
 
@@ -35,6 +40,19 @@ public class DungeonsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        HandledScreens.register(ModScreenHandlers.GEM_INFUSING_SCREEN_HANDLER, GemInfusingScreen::new);
+        ModMessages.registerS2CPackets();
+
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.STILL_SOAP_WATER, ModFluids.FLOWING_SOAP_WATER,
+                new SimpleFluidRenderHandler(
+                        new Identifier("minecraft:block/water_still"),
+                        new Identifier("minecraft:block/water_flow"),
+                        0xA1E038D0
+                ));
+
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                ModFluids.STILL_SOAP_WATER, ModFluids.FLOWING_SOAP_WATER);
+
         KeyBindingHelper.registerKeyBinding(BEGIN);
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (BEGIN.wasPressed()) {

@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import org.tbm.server.dungeons.dungeons.component.ModComponents;
 import org.tbm.server.dungeons.dungeons.component.IDungeonsPortalPosComponent;
 import org.tbm.server.dungeons.dungeons.component.IDungeonsTickComponent;
+import org.tbm.server.dungeons.dungeons.gear.tier1.Helmet;
 import org.tbm.server.dungeons.dungeons.item.ModItems;
 
 public class ModPortals {
