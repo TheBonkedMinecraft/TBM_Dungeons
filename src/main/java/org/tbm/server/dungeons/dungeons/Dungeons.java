@@ -23,6 +23,8 @@ import org.tbm.server.dungeons.dungeons.recipe.ModRecipes;
 import org.tbm.server.dungeons.dungeons.screen.ModScreenHandlers;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModPortals;
+import com.epherical.professions.events.OccupationEvents;
+import com.epherical.professions.profession.rewards.builtin.OccupationExperience;
 
 public class Dungeons implements ModInitializer {
     public static final String MOD_ID = "tbm_dungeons";
@@ -64,6 +66,15 @@ public class Dungeons implements ModInitializer {
             ILastUpdatedDifficultyComponent lastUpdate = ModComponents.LAST_UPDATED.get(server.player());
             difficulty.setValue(packet.difficulty());
             lastUpdate.setValue(System.currentTimeMillis());
+        });
+        OccupationEvents.PROFESSION_LEAVE_EVENT.register((professionalPlayer, profession, serverPlayerEntity) ->{
+            var occupation = professionalPlayer.getOccupation(profession);
+            var level = occupation.getLevel();
+            if (level > 10) {
+                occupation.setLevel(level - 10, professionalPlayer);
+            } else {
+                occupation.setLevel(0, professionalPlayer);
+            }
         });
         ServerEntityEvents.ENTITY_LOAD.register(((entity, world) -> {
             if(entity.isPlayer()){

@@ -4,7 +4,9 @@
   "package": "org.tbm.server.dungeons.dungeons.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BrewingRecipeRegistryMixin"
+    "BrewingRecipeRegistryMixin",
+    "ExpRewardMixin",
+    "PaymentRewardMixin"
   ],
   "client": [
     "DeltaChunkUpdate"

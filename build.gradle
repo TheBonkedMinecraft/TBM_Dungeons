@@ -8,7 +8,9 @@ group = project.maven_group
 
 repositories {
     mavenCentral()
+    maven { url = "https://jitpack.io" }
     maven {url = "https://maven.kyrptonaught.dev"}
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven {url = "https://maven.wispforest.io" }
     maven {
         name = 'Ladysnake Mods'
@@ -46,6 +48,12 @@ dependencies {
     annotationProcessor "io.wispforest:owo-lib:${project.owo_version}"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.0.2"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:5.0.2"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-block:5.0.2"
+    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-chunk:5.0.2"
+    modImplementation(files("lib/Professions-1.19.2-FABRIC-1.0.6.jar"))
+    include(modImplementation('me.lucko:fabric-permissions-api:0.2-SNAPSHOT'))
+    modImplementation("org.spongepowered:configurate-hocon:4.1.2")
+    modImplementation "com.github.ExcessiveAmountsOfZombies:OctoEconomyApi:5137175b1c"
     include "io.wispforest:owo-sentinel:${project.owo_version}"
 }
 
