@@ -1,0 +1,108 @@
+{
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "minecraft:optifine/cit/icons/minecraft_dungeons/icons_shield/tower_guard_shield",
+		"particle": "minecraft:optifine/cit/icons/minecraft_dungeons/icons_shield/tower_guard_shield"
+	},
+	"elements": [
+		{
+			"from": [-7, -11, 1],
+			"to": [7, 11, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 16, 16]},
+			"faces": {
+				"north": {"uv": [0.25, 0.25, 3.75, 5.75], "texture": "#0"},
+				"east": {"uv": [0, 0.25, 0.25, 5.75], "texture": "#0"},
+				"south": {"uv": [4, 0.25, 7.5, 5.75], "texture": "#0"},
+				"west": {"uv": [3.75, 0.25, 4, 5.75], "texture": "#0"},
+				"up": {"uv": [3.75, 0.25, 0.25, 0], "texture": "#0"},
+				"down": {"uv": [7.25, 0, 3.75, 0.25], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-4, 11, 1],
+			"to": [4, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 16, 16]},
+			"faces": {
+				"north": {"uv": [0.25, 6, 2.25, 6.75], "texture": "#0"},
+				"east": {"uv": [0, 6, 0.25, 6.75], "texture": "#0"},
+				"south": {"uv": [2.5, 6, 4.5, 6.75], "texture": "#0"},
+				"west": {"uv": [2.25, 6, 2.5, 6.75], "texture": "#0"},
+				"up": {"uv": [2.25, 6, 0.25, 5.75], "texture": "#0"},
+				"down": {"uv": [4.25, 5.75, 2.25, 6], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-1, -3, -5],
+			"to": [1, 3, 1],
+			"rotation": {"angle": 0, "axis": "y", "origin": [15, 16, 16]},
+			"faces": {
+				"north": {"uv": [9, 1.5, 9.5, 3], "texture": "#0"},
+				"east": {"uv": [7.5, 1.5, 9, 3], "texture": "#0"},
+				"south": {"uv": [11, 1.5, 11.5, 3], "texture": "#0"},
+				"west": {"uv": [9.5, 1.5, 11, 3], "texture": "#0"},
+				"up": {"uv": [9.5, 1.5, 9, 0], "texture": "#0"},
+				"down": {"uv": [10, 0, 9.5, 1.5], "texture": "#0"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 90, 0],
+			"translation": [10, 6, -4]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, 0],
+			"translation": [10, 6, 12]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 180, -5],
+			"translation": [-15, -1.5, -11],
+			"scale": [1.25, 1.25, 1.25]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 180, -5],
+			"translation": [5, 0.5, -11],
+			"scale": [1.25, 1.25, 1.25]
+		},
+		"ground": {
+			"translation": [4, 4, 2],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [15, -25, -5],
+			"translation": [2.25, 2, 0],
+			"scale": [0.59, 0.59, 0.59]
+		},
+		"head": {
+			"rotation": [1, 0, 0],
+			"translation": [8, 7.75, 19.5]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"translation": [-6, 5, -6.25],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	},
+	"groups": [
+		{
+			"name": "tower_guard_shield",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [
+				{
+					"name": "body",
+					"origin": [9, 15, 16],
+					"color": 0,
+					"children": [0, 1]
+				},
+				{
+					"name": "handle",
+					"origin": [8, 8, 8],
+					"color": 0,
+					"children": [2]
+				}
+			]
+		}
+	]
+}
