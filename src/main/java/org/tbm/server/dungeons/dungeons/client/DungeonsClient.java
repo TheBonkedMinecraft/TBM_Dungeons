@@ -20,11 +20,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
-import org.tbm.server.dungeons.dungeons.fluids.ModFluids;
 import org.tbm.server.dungeons.dungeons.packet.*;
 import org.tbm.server.dungeons.dungeons.screen.DifficultyOptionScreen;
-import org.tbm.server.dungeons.dungeons.screen.GemInfusingScreen;
-import org.tbm.server.dungeons.dungeons.screen.ModScreenHandlers;
 
 import java.util.Objects;
 
@@ -40,19 +37,6 @@ public class DungeonsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        HandledScreens.register(ModScreenHandlers.GEM_INFUSING_SCREEN_HANDLER, GemInfusingScreen::new);
-        ModMessages.registerS2CPackets();
-
-        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.STILL_SOAP_WATER, ModFluids.FLOWING_SOAP_WATER,
-                new SimpleFluidRenderHandler(
-                        new Identifier("minecraft:block/water_still"),
-                        new Identifier("minecraft:block/water_flow"),
-                        0xA1E038D0
-                ));
-
-        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
-                ModFluids.STILL_SOAP_WATER, ModFluids.FLOWING_SOAP_WATER);
-
         KeyBindingHelper.registerKeyBinding(BEGIN);
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (BEGIN.wasPressed()) {
