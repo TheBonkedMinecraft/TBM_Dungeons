@@ -1,0 +1,81 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.20/owo-ui.xsd">
+    <components>
+        <flow-layout direction="vertical">
+            <children>
+                <flow-layout direction="vertical">
+                    <children>
+
+                        <label>
+                            <text>Difficulty Settings</text>
+                            <positioning type="relative">50,4</positioning>
+                        </label>
+
+                        <box id="mainbox">
+                            <sizing>
+                                <horizontal method="fixed">300</horizontal>
+                                <vertical method="fixed">175</vertical>
+                            </sizing>
+                        </box>
+
+                        <label id="description">
+                            <positioning type="relative">50,45</positioning>
+                            <text>n/a</text>
+                        </label>
+
+                        <button id="difficultybutton">
+                            <positioning type="relative">50,16</positioning>
+                            <sizing>
+                                <horizontal method="fixed">56</horizontal>
+                                <vertical method="fixed">20</vertical>
+                            </sizing>
+                        </button>
+
+                        <item id="clock">
+                            <positioning type="relative">50,70</positioning>
+                            <sizing>
+                                <vertical method="fixed">12</vertical>
+                                <horizontal method="fixed">12</horizontal>
+                            </sizing>
+                        </item>
+
+                        <label id="time">
+                            <positioning type="relative">50,75</positioning>
+                            <sizing>
+                                <horizontal method="content">0</horizontal>
+                                <vertical method="content">0</vertical>
+                            </sizing>
+                        </label>
+
+                        <button id="confirm_difficulty">
+                            <sizing>
+                                <horizontal method="fixed">56</horizontal>
+                                <vertical method="fixed">20</vertical>
+                            </sizing>
+                            <positioning type="relative">50,70</positioning>
+                        </button>
+
+                    </children>
+
+                    <horizontal-alignment>center</horizontal-alignment>
+                    <vertical-alignment>center</vertical-alignment>
+
+                    <padding>
+                        <all>4</all>
+                    </padding>
+                    <surface>
+                        <panel dark="true"/>
+                    </surface>
+
+                </flow-layout>
+            </children>
+
+            <vertical-alignment>center</vertical-alignment>
+            <horizontal-alignment>center</horizontal-alignment>
+
+            <surface>
+                <vanilla-translucent/>
+            </surface>
+        </flow-layout>
+    </components>
+</owo-ui>
