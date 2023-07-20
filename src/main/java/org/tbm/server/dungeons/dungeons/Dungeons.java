@@ -3,6 +3,7 @@ package org.tbm.server.dungeons.dungeons;
 import io.wispforest.owo.network.OwoNetChannel;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +20,6 @@ import org.tbm.server.dungeons.dungeons.packet.*;
 import org.tbm.server.dungeons.dungeons.potion.ModPotions;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModPortals;
-import com.epherical.professions.events.OccupationEvents;
 
 public class Dungeons implements ModInitializer {
     public static final String MOD_ID = "tbm_dungeons";
@@ -58,21 +58,17 @@ public class Dungeons implements ModInitializer {
             difficulty.setValue(packet.difficulty());
             lastUpdate.setValue(System.currentTimeMillis());
         });
-        OccupationEvents.PROFESSION_LEAVE_EVENT.register((professionalPlayer, profession, serverPlayerEntity) ->{
-            var occupation = professionalPlayer.getOccupation(profession);
-            var level = occupation.getLevel();
-            if (level > 10) {
-                occupation.setLevel(level - 10, professionalPlayer);
-            } else {
-                occupation.setLevel(0, professionalPlayer);
-            }
-        });
         ServerEntityEvents.ENTITY_LOAD.register(((entity, world) -> {
             if(entity.isPlayer()){
                 IDifficultyComponent difficulty = ModComponents.DIFFICULTY_SETTING.get(entity);
-                System.out.println("Diff on entity load: " + difficulty.getValue());
                 ((PlayerEntity) entity).clearStatusEffects();
-                ((PlayerEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 999999, 0, true, false, false));
+                if (difficulty.getValue() == 0){
+                    ((PlayerEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 999999, 0, true, false, true));
+                } else if (difficulty.getValue() == 2) {
+                    ((PlayerEntity) entity).getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(14);
+                } else if (difficulty.getValue() == 3) {
+                    ((PlayerEntity) entity).getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(10);
+                }
             }
         }));
     }

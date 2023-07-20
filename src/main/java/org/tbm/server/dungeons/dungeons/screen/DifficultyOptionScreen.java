@@ -28,10 +28,10 @@ public class DifficultyOptionScreen extends BaseOwoScreen<FlowLayout> {
     String[] difficulties = {"Easy", "Normal", "Hard", "Extreme"};
     public final MinecraftClient playerMc = MinecraftClient.getInstance();
     String[] descriptions = {
-            "§l- EASY MODE (line1)\n§l- Line 2\n§l- Line 3\n§l- Line 4",
-            "§l- NORMAL MODE (line1)\n§l- Line 2\n§l- Line 3\n§l- Line 4",
-            "§l- HARD MODE (line1)\n§l- Line 2\n§l- Line 3\n§l- Line 4",
-            "§l- EXTREME MODE (line1)\n§l- Line 2\n§l- Line 3\n§l- Line 4",
+            "§l- Constant Resistance 1 to player.\n§l- 0.7x Coin Drops Multiplier\n§l- 0.7x Professions XP Multiplier",
+            "§l- No Buffs or Debuffs\n§l- 1x Coin Drops Multiplier\n§l- 1x Professions XP Multiplier",
+            "§l- 7 Hearts\n§l- 1.5x Coin Drops Multiplier\n§l- 1.5x Professions XP Multiplier",
+            "§l- 5 Hearts\n§l- 2x Coin Drops Multiplier\n§l- 2x Professions XP Multiplier",
     };
 
     AtomicLong lastUpdate = new AtomicLong(0);
