@@ -1,6 +1,7 @@
 package org.tbm.server.dungeons.dungeons;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import io.wispforest.owo.network.OwoNetChannel;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
@@ -83,6 +84,7 @@ public class Dungeons implements ModInitializer {
             }
         }));
         ServerLifecycleEvents.SERVER_STARTED.register((minecraftServer)->{
+            System.out.println("SERVER STARTED Gladge");
             var recipe = minecraftServer.getRecipeManager();
             var all = recipe.values().stream().toList();
             for (net.minecraft.recipe.Recipe<?> value : all) {
@@ -91,11 +93,16 @@ public class Dungeons implements ModInitializer {
                 DefaultedList<Ingredient> ingredients = value.getIngredients();
 
                 RecipeInfo info = new RecipeInfo();
-
                 info.type = type.toString();
                 info.output = RecipeItem.fromItemStack(out);
                 info.ingredients = RecipeItem.fromIngredients(ingredients);
-
+                System.out.println("NAME: " + out);
+                System.out.println("INFO TYPE: " + info.type); // type: "minecraft:crafting_shaped
+                System.out.println("INFO OUTPUT: " + info.output.id);
+                System.out.println("INFO INGREDIENTS: " + info.ingredients); // turn this into pattern
+                System.out.println("=======================================");
+                // slow halp peepoCute peepoDespair i've tried writing to JSON files with JsonObjects, etc ;-;
+                // you're 100000x better at this than me D:
             }
         });
     }
