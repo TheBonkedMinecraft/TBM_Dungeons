@@ -1,22 +1,14 @@
 package org.tbm.server.dungeons.dungeons;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import io.wispforest.owo.network.OwoNetChannel;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
@@ -28,10 +20,6 @@ import org.tbm.server.dungeons.dungeons.packet.*;
 import org.tbm.server.dungeons.dungeons.potion.ModPotions;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModDimensions;
 import org.tbm.server.dungeons.dungeons.world.dimension.ModPortals;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public class Dungeons implements ModInitializer {
     public static final String MOD_ID = "tbm_dungeons";
@@ -83,28 +71,6 @@ public class Dungeons implements ModInitializer {
                 }
             }
         }));
-        ServerLifecycleEvents.SERVER_STARTED.register((minecraftServer)->{
-            System.out.println("SERVER STARTED Gladge");
-            var recipe = minecraftServer.getRecipeManager();
-            var all = recipe.values().stream().toList();
-            for (net.minecraft.recipe.Recipe<?> value : all) {
-                RecipeType<?> type = value.getType();
-                ItemStack out = value.getOutput();
-                DefaultedList<Ingredient> ingredients = value.getIngredients();
-
-                RecipeInfo info = new RecipeInfo();
-                info.type = type.toString();
-                info.output = RecipeItem.fromItemStack(out);
-                info.ingredients = RecipeItem.fromIngredients(ingredients);
-                System.out.println("NAME: " + out);
-                System.out.println("INFO TYPE: " + info.type); // type: "minecraft:crafting_shaped
-                System.out.println("INFO OUTPUT: " + info.output.id);
-                System.out.println("INFO INGREDIENTS: " + info.ingredients); // turn this into pattern
-                System.out.println("=======================================");
-                // slow halp peepoCute peepoDespair i've tried writing to JSON files with JsonObjects, etc ;-;
-                // you're 100000x better at this than me D:
-            }
-        });
     }
 }
 
