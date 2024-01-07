@@ -16,6 +16,7 @@ import org.tbm.server.dungeons.dungeons.item.ModItems;
 
 public class ModPortals {
     public static void registerPortals(){
+        /*
         CustomPortalBuilder.beginPortal()
                 .frameBlock(Blocks.REINFORCED_DEEPSLATE)
                 .destDimID(ModDimensions.DUNGEONS_KEY.getValue())
@@ -62,6 +63,6 @@ public class ModPortals {
                         BlockPos pos = portalPos.getBlockPos();
                         entity.getWorld().breakBlock(pos, false);
                     }
-                });
+                });*/
     }
 }

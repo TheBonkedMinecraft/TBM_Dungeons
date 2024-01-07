@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.networking.v1.ClientLoginConnectionEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
@@ -16,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import org.tbm.server.dungeons.dungeons.packet.*;
+import org.tbm.server.dungeons.dungeons.resource.ResourceSync;
 import org.tbm.server.dungeons.dungeons.screen.DifficultyOptionScreen;
 
 import java.util.Objects;
@@ -40,6 +42,7 @@ public class DungeonsClient implements ClientModInitializer {
             }
         });
 
+        ResourceSync.sync();
         final String category = "key.categories.misc";
         requestBlocks = new KeyBinding("key.state_update.reveal", GLFW_KEY_K, category);
         KeyBindingHelper.registerKeyBinding(requestBlocks);
